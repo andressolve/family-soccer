@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spring Family Soccer — Coaches Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --dk: #1B2A4A;
+  --md: #2C4A7C;
+  --ac: #D4A843;
+  --lt: #EAF0FA;
+  --bg: #F8F9FC;
+  --card: #FFFFFF;
+  --text: #1E2A3A;
+  --muted: #5A6B7F;
+  --border: #DDE4EE;
+  --green: #2D8B57;
+  --green-lt: #E6F5ED;
+  --warm: #FDF8EE;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.site-header {
+  background: var(--dk);
+  padding: 3rem 2rem 2.5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.site-header::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -20%;
+  width: 140%;
+  height: 200%;
+  background: radial-gradient(ellipse at 30% 50%, rgba(212,168,67,0.1) 0%, transparent 60%);
+  pointer-events: none;
+}
+.site-header h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 2.4rem;
+  color: #fff;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.3rem;
+  position: relative;
+}
+.site-header .subtitle {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.15rem;
+  color: var(--ac);
+  font-style: italic;
+  opacity: 0.9;
+  position: relative;
+}
+.site-header .tagline {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.5);
+  margin-top: 1rem;
+  position: relative;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.phase-nav {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1.2rem 2rem;
+  background: var(--card);
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.phase-nav a {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 100px;
+  transition: all 0.2s;
+}
+.phase-nav a:hover, .phase-nav a.active {
+  background: var(--lt);
+  color: var(--dk);
+}
+
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+}
+
+.phase {
+  margin-bottom: 3rem;
+}
+.phase-header {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 0.3rem;
+  padding-top: 2rem;
+  flex-wrap: wrap;
+}
+.phase-header h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.6rem;
+  color: var(--dk);
+}
+.phase-header .phase-tag {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--md);
+  background: var(--lt);
+  padding: 0.25rem 0.75rem;
+  border-radius: 100px;
+}
+.phase-desc {
+  color: var(--muted);
+  font-size: 0.92rem;
+  margin-bottom: 1.5rem;
+  max-width: 700px;
+}
+
+.session-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.8rem;
+  margin-bottom: 1rem;
+  transition: all 0.25s ease;
+}
+.session-card:hover {
+  border-color: var(--ac);
+  box-shadow: 0 4px 20px rgba(27,42,74,0.08);
+}
+.session-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+  flex-wrap: wrap;
+}
+.session-week {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ac);
+}
+.session-date {
+  font-size: 0.7rem;
+  color: var(--muted);
+  letter-spacing: 0.03em;
+}
+.session-card h3 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.2rem;
+  color: var(--dk);
+  margin-bottom: 0.75rem;
+  line-height: 1.3;
+}
+.session-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.session-block {
+  background: var(--bg);
+  border-radius: 8px;
+  padding: 1rem;
+}
+.session-block.full {
+  grid-column: 1 / -1;
+}
+.session-block h4 {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--md);
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.session-block ul {
+  list-style: none;
+  padding: 0;
+}
+.session-block li {
+  font-size: 0.84rem;
+  color: var(--text);
+  padding: 0.2rem 0;
+  padding-left: 1rem;
+  position: relative;
+}
+.session-block li::before {
+  content: '\2022';
+  position: absolute;
+  left: 0;
+  color: var(--ac);
+  font-weight: 700;
+}
+.session-block p {
+  font-size: 0.84rem;
+  color: var(--text);
+}
+.coaching-tip {
+  background: var(--warm);
+  border-left: 3px solid var(--ac);
+  border-radius: 0 8px 8px 0;
+  padding: 0.8rem 1rem;
+  font-size: 0.82rem;
+  color: var(--text);
+}
+.coaching-tip strong {
+  color: var(--dk);
+}
+.time-badge {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  background: var(--lt);
+  color: var(--md);
+  padding: 0.15rem 0.5rem;
+  border-radius: 100px;
+  margin-left: 0.3rem;
+}
+.gk-badge {
+  display: inline-block;
+  font-size: 0.62rem;
+  font-weight: 700;
+  background: var(--green-lt);
+  color: var(--green);
+  padding: 0.15rem 0.5rem;
+  border-radius: 100px;
+  margin-left: 0.3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+footer {
+  text-align: center;
+  padding: 2rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+  border-top: 1px solid var(--border);
+  margin-top: 2rem;
+}
+
+@media (max-width: 600px) {
+  .site-header h1 { font-size: 1.8rem; }
+  .session-grid { grid-template-columns: 1fr; }
+  .phase-nav { gap: 0.25rem; }
+  .phase-nav a { font-size: 0.7rem; padding: 0.4rem 0.7rem; }
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <h1>Spring Family Soccer</h1>
+  <div class="subtitle">Coaches Guide — Andres & Maria</div>
+  <div class="tagline">13 weeks · Saturdays · April – June 2026</div>
+</header>
+
+<nav class="phase-nav">
+  <a href="#apr">April</a>
+  <a href="#may">May</a>
+  <a href="#jun">June</a>
+</nav>
+
+<main>
+
+<!-- ==================== APRIL ==================== -->
+<section class="phase" id="apr">
+  <div class="phase-header">
+    <h2>April — Foundations</h2>
+    <span class="phase-tag">Weeks 1–4</span>
+  </div>
+  <p class="phase-desc">Build comfort on the ball. Every session follows the same rhythm: warm-up, main skill work, scrimmage, cool-down. Keep it fun — at 7 and 9, enjoyment = repetition = improvement.</p>
+
+  <!-- Week 1 -->
+  <div class="session-card">
+    <div class="session-meta">
+      <span class="session-week">Week 1</span>
+      <span class="session-date">Saturday, April 4</span>
+    </div>
+    <h3>Ball Mastery</h3>
+    <div class="session-grid">
+      <div class="session-block">
+        <h4>Warm-Up <span class="time-badge">10 min</span></h4>
+        <ul>
+          <li>Jog with ball at feet — stop on whistle</li>
+          <li>Toe taps on top of ball (30 sec each foot)</li>
+          <li>Side-to-side rolls with sole of foot</li>
+        </ul>
+      </div>
+      <div class="session-block">
+        <h4>Main Drills <span class="time-badge">20 min</span></h4>
+        <ul>
+          <li><strong>Sole rolls:</strong> Roll ball forward/back, side to side — both feet</li>
+          <li><strong>Inside-outside touches:</strong> Tap ball between feet while moving forward</li>
+          <li><strong>Ball mastery square:</strong> Set up 5m square, do different touches along each side</li>
+        </ul>
+      </div>
+      <div class="session-block">
+        <h4>Scrimmage <span class="time-badge">15 min</span></h4>
+        <ul>
+          <li>2v2 in small area (parents vs kids or mixed teams)</li>
+          <li>Rule: must do 3 touches before passing</li>
+        </ul>
+      </div>
+      <div class="session-block">
+        <h4>Cool-Down <span class="time-badge">5 min</span></h4>
+        <ul>
+          <li>Juggling challenge (count personal best)</li>
+          <li>Light stretching in circle</li>
+        </ul>
+      </div>
+    </div>
+    <div class="coaching-tip"><strong>Coaching tip:</strong> Don't correct too much in Week 1. Let them explore the ball. Praise effort, not outcomes. Sebastian may want to use his hands — let him do a short GK warm-up at the end if he asks.</div>
+  </div>
+
+  <!-- Week 2 -->
+  <div class="session-card">
+    <div class="session-meta">
+      <span class="session-week">Week 2</span>
+      <span class="session-date">Saturday, April 11</span>
+    </div>
+    <h3>Dribbling Basics</h3>
+    <div class="session-grid">
+      <div class="session-block">
+        <h4>Warm-Up <span class="time-badge">10 min</span></h4>
+        <ul>
+          <li>Dribble freely in a grid — avoid each other</li>
+          <li>"Traffic light" game: green = dribble, yellow = slow, red = stop with sole on ball</li>
+        </ul>
+      </div>
+      <div class="session-block">
+        <h4>Main Drills <span class="time-badge">20 min</span></h4>
+        <ul>
+          <li><strong>Cone weave:</strong> Dribble through cones using inside of foot only, then outside only</li>
+          <li><strong>Close control relay:</strong> Dribble to cone and back, keep ball within arm's length</li>
+          <li><strong>Shadow dribble:</strong> One leads, other follows and copies their moves</li>
+        </ul>
+      </div>
+      <div class="session-block">
+        <h4>Scrimmage <span class="time-badge">15 min</span></h4>
+        <ul>
+          <li>2v2 — bonus point for dribbling past a player</li>
+          <li>Small goals, no goalkeepers</li>
+        </ul>
+      </div>
+      <div class="session-block">
+        <h4>Cool-Down <span class="time-badge">5 min</span></h4>
+        <ul>
+          <li>"King of the ring" — everyone dribbles in circle, try to knock others' balls out</li>
+          <li>Stretching</li>
+        </ul>
+      </div>
+    </div>
+    <div class="coaching-tip"><strong>Coaching tip:</strong> "Head up!" is the #1 cue this week. Have them dribble toward you and call out how many fingers you're holding up. Keep the cone spacing wide for Sebastian, tighter for Francisco.</div>
+  </div>
+
+  <!-- Week 3 -->
+  <div class="session-card">
+    <div class="session-meta">
+      <span class="session-week">Week 3</span>
+      <span class="session-date">Saturday, April 18</span>
+    </div>
+    <h3>Passing</h3>
+    <div class="session-grid">
+      <div class="session-block">
+        <h4>Warm-Up <span class="time-badge">10 min</span></h4>
+        <ul>
+          <li>Pairs passing — 3m apart, inside of foot</li>
+          <li>Gradually increase distance as they get comfortable</li>
+        </ul>
+      </div>
+      <div class="session-block">
+        <h4>Main Drills <span class="time-badge">20 min</span></h4>
+        <ul>
+          <li><strong>Gate passing:</strong> Set up cone "gates" — pass through as many as possible in 2 min</li>
+          <li><strong>Triangle passing:</strong> 3 players in triangle, pass and follow your pass</li>
+          <li><strong>Wall pass intro:</strong> Pass to parent, receive back, shoot at goal</li>
+        </ul>
+      </div>
+      <div class="session-block">
+        <h4>Scrimmage <span class="time-badge">15 min</span></h4>
+        <ul>
+          <li>2v2 — goal only counts if preceded by a pass</li>
+          <li>Sebastian in goal for last 5 min if he wants</li>
+        </ul>
+      </div>
+      <div class="session-block">
+        <h4>Cool-Down <span class="time-badge">5 min</span></h4>
+        <ul>
+          <li>Longest pass challenge — who can pass accurately the farthest?</li>
+          <li>Stretching</li>
+        </ul>
+      </div>
+    </div>
+    <div class="coaching-tip"><strong>Coaching tip:</strong> "Lock your ankle, toe up" — the inside-foot pass needs a firm ankle. Demo the wrong way (floppy ankle) vs. right way. Kids this age tend to use their toe — gently redirect to the inside of the foot every time.</div>
+  </div>
+
+  <!-- Week 4 -->
+  <div class="session-card">
+    <div class="session-meta">
+      <span class="session-week">Week 4</span>
+      <span class="session-date">Saturday, April 25</span>
+    </div>
+    <h3>Receiving & First Touch</h3>
+    <div class="session-grid">
+      <div class="session-block">
+        <h4>Warm-Up <span class="time-badge">10 min</span></h4>
+        <ul>
+          <li>Toss ball to each other — receive with inside of foot, sole, thigh</li>
+          <li>"Cushion" the ball — demonstrate killing the ball dead</li>
+        </ul>
+      </div>
+      <div class="session-block">
+        <h4>Main Drills <span class="time-badge">20 min</span></h4>
+        <ul>
+          <li><strong>Pass-and-control:</strong> Pairs — pass firmly, receiver takes one touch to control, one touch to pass back</li>
+          <li><strong>Turn drill:</strong> Receive with back to passer, turn and dribble through a cone gate</li>
+          <li><strong>Bounce game:</strong> Throw ball to partner, they control it before it bounces twice</li>
+        </ul>
+      </div>
+      <div class="session-block">
+        <h4>Scrimmage <span class="time-badge">15 min</span></h4>
+        <ul>
+          <li>3v1 keep-away — one defender, three try to keep the ball</li>
+          <li>Rotate defender every 90 seconds</li>
+        </ul>
+      </div>
+      <div class="session-block">
+        <h4>Cool-Down <span class="time-badge">5 min</span></h4>
+        <ul>
+          <li>Juggling challenge — beat last week's record</li>
+          <li>Stretching</li>
+        </ul>
+      </div>
+    </div>
+    <div class="coaching-tip"><strong>Coaching tip:</strong> "Soft feet!" — the ball should land like it's hitting a pillow, not a wall. The key cue is to pull the foot back slightly on contact. For Francisco, add the challenge of controlling while moving. Sebastian can practice catching (GK receiving).</div>
+  </div>
+
+</section>
+
+<!-- ==================== MAY ==================== -->
+<section class="phase" id="may">
+  <div class="phase-header">
+    <h2>May — Skills & Tactics</h2>
+    <span class="phase-tag">Weeks 5–9</span>
+  </div>
+  <p class="phase-desc">Build on the fundamentals. Introduce shooting, moves, defending, and Sebastian's goalkeeping. Sessions get more game-like as confidence grows.</p>
+
+  <!-- Week 5 -->
+  <div class="session-card">
+    <div class="session-meta">
+      <span class="session-week">Week 5</span>
+      <span class="session-date">Saturday, May 2</span>
+    </div>
+    <h3>Shooting & Goalkeeping Intro <span class="gk-badge">GK Session</span></h3>
+    <div class="session-grid">
+      <div class="session-block">
+        <h4>Warm-Up <span class="time-badge">10 min</span></h4>
+        <ul>
+          <li>Passing pairs — 10 passes each, quick feet</li>
+          <li>Light jog with dynamic stretches</li>
+        </ul>
+      </div>
+      <div class="session-block">
+        <h4>Main Drills — Shooting <span class="time-badge">10 min</span></h4>
+        <ul>
+          <li><strong>Laces strike:</strong> Demo planting foot beside ball, striking with laces, following through</li>
+          <li><strong>Target practice:</strong> Cones in corners of goal — hit the targets</li>
+          <li>Shoot from different angles and distances</li>
+        </ul>
+      </div>
+      <div class="session-block">
+        <h4>Main Drills — Goalkeeping <span class="time-badge">10 min</span></h4>
+        <ul>
+          <li><strong>Ready position:</strong> Feet shoulder-width, knees bent, hands up, weight forward</li>
+          <li><strong>Catching:</strong> "W" shape hands for high balls, scoop for low balls</li>
+          <li><strong>Basic saves:</strong> Roll balls to GK from 5m — set position, then save</li>
+          <li>Everyone takes turns in goal, Sebastian gets extra reps</li>
+        </ul>
+      </div>
+      <div class="session-block">
+        <h4>Scrimmage <span class="time-badge">15 min</span></h4>
+        <ul>
+          <li>2v1 + GK — attackers try to score, Sebastian in goal</li>
+          <li>Rotate roles every 3 minutes</li>
+        </ul>
+      </div>
+    </div>
+    <div class="coaching-tip"><strong>Coaching tip:</strong> Shooting — "plant foot points where you want the ball to go." GK — never force diving yet, focus on getting the body behind the ball. Sebastian: praise him for making himself big and staying on his feet.</div>
+  </div>
+
+  <!-- Week 6 -->
+  <div class="session-card">
+    <div class="session-meta">
+      <span class="session-week">Week 6</span>
+      <span class="session-date">Saturday, May 9</span>
+    </div>
+    <h3>1v1 Moves</h3>
+    <div class="session-grid">
+      <div class="session-block">
+        <h4>Warm-Up <span class="time-badge">10 min</span></h4>
+        <ul>
+          <li>Ball mastery review — toe taps, sole rolls, inside-outside</li>
+          <li>Dribble through cone gates at speed</li>
+        </ul>
+      </div>
+      <div class="session-block">
+        <h4>Main Drills <span class="time-badge">20 min</span></h4>
+        <ul>
+          <li><strong>Step-over:</strong> Demo step over the ball, push away with outside of foot. Practice static, then at cones</li>
+          <li><strong>Scissors:</strong> Swing foot around the ball, push opposite direction. Start slow</li>
+          <li><strong>Body feint:</strong> Drop shoulder one way, push ball the other. "Sell the fake!"</li>
+          <li><strong>1v1 channel:</strong> Attacker tries to dribble past defender in narrow lane</li>
+        </ul>
+      </div>
+      <div class="session-block">
+        <h4>Scrimmage <span class="time-badge">15 min</span></h4>
+        <ul>
+          <li>1v1 to mini goals — use a move before you can score</li>
+          <li>Winner stays on</li>
+        </ul>
+      </div>
+      <div class="session-block">
+        <h4>Cool-Down <span class="time-badge">5 min</span></h4>
+        <ul>
+          <li>Freestyle — show off your favourite move</li>
+          <li>Stretching</li>
+        </ul>
+      </div>
+    </div>
+    <div class="coaching-tip"><strong>Coaching tip:</strong> Kids love moves! This is the session they'll talk about all week. Let them be creative. The key is change of pace — the move is useless without acceleration after. For Sebastian: let him be the defender sometimes to read the attacker (helps his GK anticipation).</div>
+  </div>
+
+  <!-- Week 7 -->
+  <div class="session-card">
+    <div class="session-meta">
+      <span class="session-week">Week 7</span>
+      <span class="session-date">Saturday, May 16</span>
+    </div>
+    <h3>Change of Direction</h3>
+    <div class="session-grid">
+      <div class="session-block">
+        <h4>Warm-Up <span class="time-badge">10 min</span></h4>
+        <ul>
+          <li>Dribble in grid — on whistle, cut 90 degrees</li>
+          <li>Inside cut, outside cut, sole drag-back</li>
+        </ul>
+      </div>
+      <div class="session-block">
+        <h4>Main Drills <span class="time-badge">20 min</span></h4>
+        <ul>
+          <li><strong>Inside cut:</strong> Dribble at cone, cut inside with inside of foot, accelerate away</li>
+          <li><strong>Outside hook:</strong> Hook ball with outside of foot, reverse direction</li>
+          <li><strong>Cruyff turn:</strong> Fake a pass/shot, drag ball behind standing leg. Demo slowly!</li>
+          <li><strong>Cone gauntlet:</strong> Zig-zag through cones using different turns at each one</li>
+        </ul>
+      </div>
+      <div class="session-block">
+        <h4>Scrimmage <span class="time-badge">15 min</span></h4>
+        <ul>
+          <li>2v2 — "escape" game: score by dribbling over an end line, not into a goal</li>
+          <li>Forces lots of direction changes to beat defenders</li>
+        </ul>
+      </div>
+      <div class="session-block">
+        <h4>Cool-Down <span class="time-badge">5 min</span></h4>
+        <ul>
+          <li>Cruyff turn competition — who can do 10 fastest?</li>
+          <li>Stretching</li>
+        </ul>
+      </div>
+    </div>
+    <div class="coaching-tip"><strong>Coaching tip:</strong> The Cruyff turn will take many attempts. Break it down: 1) shape to pass, 2) drag ball behind standing leg, 3) turn and go. Francisco may get it faster — have him demo for Sebastian. Use the phrase "show and go" to cue the fake.</div>
+  </div>
+
+  <!-- Week 8 -->
+  <div class="session-card">
+    <div class="session-meta">
+      <span class="session-week">Week 8</span>
+      <span class="session-date">Saturday, May 23</span>
+    </div>
+    <h3>Goalkeeping Deep Dive <span class="gk-badge">Sebastian's Session</span></h3>
+    <div class="session-grid">
+      <div class="session-block">
+        <h4>Warm-Up <span class="time-badge">10 min</span></h4>
+        <ul>
+          <li>GK footwork: lateral shuffles between cones</li>
+          <li>Catch & throw pairs — high, medium, low</li>
+          <li>Reaction game: coach points direction, GK shuffles and sets</li>
+        </ul>
+      </div>
+      <div class="session-block">
+        <h4>Main Drills — Everyone <span class="time-badge">10 min</span></h4>
+        <ul>
+          <li><strong>Shot-stopping circuit:</strong> Everyone takes turns in goal — 5 shots each from 8m</li>
+          <li><strong>GK distribution:</strong> After saving, throw or roll ball accurately to a teammate</li>
+        </ul>
+      </div>
+      <div class="session-block full">
+        <h4>Main Drills — Sebastian Focus <span class="time-badge">10 min</span></h4>
+        <ul>
+          <li><strong>Diving intro:</strong> Start on knees, fall sideways to save. Progress to crouching, then standing</li>
+          <li><strong>Catching technique:</strong> "W" hands for face-height, basket catch for below waist</li>
+          <li><strong>1v1 bravery:</strong> Attacker dribbles in — GK comes out, makes themselves big, narrows the angle</li>
+          <li><strong>GK footwork:</strong> Shuffle along the line, set, save — no crossing feet!</li>
+          <li>Francisco practices shooting while Sebastian saves — win-win</li>
+        </ul>
+      </div>
+      <div class="session-block">
+        <h4>Scrimmage <span class="time-badge">15 min</span></h4>
+        <ul>
+          <li>2v1 + GK — Sebastian in goal, focus on positioning</li>
+          <li>"Can you save 5 in a row?" challenge</li>
+        </ul>
+      </div>
+    </div>
+    <div class="coaching-tip"><strong>Coaching tip:</strong> This is Sebastian's day to shine. Make him feel like the expert. Key cues: "Set your feet before the shot," "hands up, ready," and "attack the ball, don't wait for it." For diving — always onto soft grass, never force it. Let him build confidence at his own pace. Use rolled balls before kicked ones.</div>
+  </div>
+
+  <!-- Week 9 -->
+  <div class="session-card">
+    <div class="session-meta">
+      <span class="session-week">Week 9</span>
+      <span class="session-date">Saturday, May 30</span>
+    </div>
+    <h3>Defending Basics</h3>
+    <div class="session-grid">
+      <div class="session-block">
+        <h4>Warm-Up <span class="time-badge">10 min</span></h4>
+        <ul>
+          <li>Tag game with balls — dribble and tag at the same time</li>
+          <li>Shadow drill: defender mirrors attacker's movements without the ball</li>
+        </ul>
+      </div>
+      <div class="session-block">
+        <h4>Main Drills <span class="time-badge">20 min</span></h4>
+        <ul>
+          <li><strong>Jockeying:</strong> Defender stays on feet, shuffles, keeps body between attacker and goal</li>
+          <li><strong>Channeling:</strong> Force the attacker to one side — "show them the sideline"</li>
+          <li><strong>Tackling intro:</strong> Block tackle with inside of foot — timing is everything</li>
+          <li><strong>1v1 defending:</strong> Attacker starts 10m away, defender closes down and contains</li>
+        </ul>
+      </div>
+      <div class="session-block">
+        <h4>Scrimmage <span class="time-badge">15 min</span></h4>
+        <ul>
+          <li>2v2 — defensive team gets a point for winning the ball back and completing 3 passes</li>
+          <li>Sebastian as GK — coach him to organize: "left! right! close down!"</li>
+        </ul>
+      </div>
+      <div class="session-block">
+        <h4>Cool-Down <span class="time-badge">5 min</span></h4>
+        <ul>
+          <li>Discussion: what's harder — attacking or defending? Why?</li>
+          <li>Stretching</li>
+        </ul>
+      </div>
+    </div>
+    <div class="coaching-tip"><strong>Coaching tip:</strong> "Stay on your feet!" is the mantra. Kids dive in — teach patience. The defender wins by not getting beaten, not by winning the ball. For Sebastian in goal: this is where he learns to talk to his defenders — encourage him to shout instructions.</div>
+  </div>
+
+</section>
+
+<!-- ==================== JUNE ==================== -->
+<section class="phase" id="jun">
+  <div class="phase-header">
+    <h2>June — Game Play & Celebration</h2>
+    <span class="phase-tag">Weeks 10–13</span>
+  </div>
+  <p class="phase-desc">Put it all together. Combination play, game situations, set pieces, and a family tournament to close out the season. By now they should be confident on the ball and ready to play.</p>
+
+  <!-- Week 10 -->
+  <div class="session-card">
+    <div class="session-meta">
+      <span class="session-week">Week 10</span>
+      <span class="session-date">Saturday, June 6</span>
+    </div>
+    <h3>Combination Play</h3>
+    <div class="session-grid">
+      <div class="session-block">
+        <h4>Warm-Up <span class="time-badge">10 min</span></h4>
+        <ul>
+          <li>Triangle passing — one touch if possible</li>
+          <li>Pass and move — never stand still after passing</li>
+        </ul>
+      </div>
+      <div class="session-block">
+        <h4>Main Drills <span class="time-badge">20 min</span></h4>
+        <ul>
+          <li><strong>Wall pass (give-and-go):</strong> Pass to teammate, sprint past defender, receive return pass</li>
+          <li><strong>Overlap run:</strong> Pass wide, the passer runs around the outside for a return ball</li>
+          <li><strong>2v1 attack:</strong> Two attackers vs one defender — use the extra player!</li>
+        </ul>
+      </div>
+      <div class="session-block">
+        <h4>Scrimmage <span class="time-badge">15 min</span></h4>
+        <ul>
+          <li>2v2 + GK — goal only counts from a combination play (wall pass or overlap)</li>
+          <li>Sebastian in goal — practice starting attacks with throws</li>
+        </ul>
+      </div>
+      <div class="session-block">
+        <h4>Cool-Down <span class="time-badge">5 min</span></h4>
+        <ul>
+          <li>Rondo: 3v1 keep-away — quick passing</li>
+          <li>Stretching</li>
+        </ul>
+      </div>
+    </div>
+    <div class="coaching-tip"><strong>Coaching tip:</strong> The wall pass is a game-changer at this age because nobody expects it. Key cue: "pass and GO, don't pass and watch." Play with the kids — they need a reliable wall to pass off. Sebastian can practice GK distribution to start these combinations.</div>
+  </div>
+
+  <!-- Week 11 -->
+  <div class="session-card">
+    <div class="session-meta">
+      <span class="session-week">Week 11</span>
+      <span class="session-date">Saturday, June 13</span>
+    </div>
+    <h3>Small-Sided Games</h3>
+    <div class="session-grid">
+      <div class="session-block">
+        <h4>Warm-Up <span class="time-badge">10 min</span></h4>
+        <ul>
+          <li>Ball mastery review — pick your 3 favourite touches</li>
+          <li>Quick passing pairs — 20 passes in 1 minute</li>
+        </ul>
+      </div>
+      <div class="session-block">
+        <h4>Main Activities <span class="time-badge">35 min</span></h4>
+        <ul>
+          <li><strong>3v1 Rondo:</strong> Keep the ball away from the defender — 2-touch max (10 min)</li>
+          <li><strong>2v2 mini tournament:</strong> First to 3 goals, switch opponents (15 min)</li>
+          <li><strong>Game awareness:</strong> Pause the game mid-play — "where should you be? what are your options?" (10 min)</li>
+        </ul>
+      </div>
+      <div class="session-block full">
+        <h4>Cool-Down <span class="time-badge">5 min</span></h4>
+        <ul>
+          <li>What was your best moment today? Each person shares</li>
+          <li>Stretching</li>
+        </ul>
+      </div>
+    </div>
+    <div class="coaching-tip"><strong>Coaching tip:</strong> Less coaching, more playing today. Step back and let them figure things out. Only pause to ask questions: "What did you see?" "Was there a better option?" The freeze-frame moments are gold for developing game sense. Sebastian: let him play outfield too — well-rounded.</div>
+  </div>
+
+  <!-- Week 12 -->
+  <div class="session-card">
+    <div class="session-meta">
+      <span class="session-week">Week 12</span>
+      <span class="session-date">Saturday, June 20</span>
+    </div>
+    <h3>Set Pieces & Game Situations</h3>
+    <div class="session-grid">
+      <div class="session-block">
+        <h4>Warm-Up <span class="time-badge">10 min</span></h4>
+        <ul>
+          <li>Shooting practice from different positions</li>
+          <li>GK warm-up for Sebastian — shots from 10m</li>
+        </ul>
+      </div>
+      <div class="session-block">
+        <h4>Main Drills — Set Pieces <span class="time-badge">10 min</span></h4>
+        <ul>
+          <li><strong>Corner kicks:</strong> Practice delivery to near post/far post, and attacking the ball</li>
+          <li><strong>Free kicks:</strong> Direct free kicks from 15m — pick your spot</li>
+          <li><strong>Throw-ins:</strong> Proper technique — both feet on the ground, ball behind head</li>
+        </ul>
+      </div>
+      <div class="session-block">
+        <h4>Main Drills — Decision Making <span class="time-badge">10 min</span></h4>
+        <ul>
+          <li><strong>Pass or dribble?</strong> Attacker faces defender — coach calls "1!" (1v1) or "2!" (2v1). Read the situation</li>
+          <li><strong>Transition game:</strong> Lose the ball → defend immediately. Win it back → attack immediately</li>
+        </ul>
+      </div>
+      <div class="session-block">
+        <h4>Scrimmage <span class="time-badge">15 min</span></h4>
+        <ul>
+          <li>Full game with set pieces — every out-of-play is practiced properly</li>
+          <li>Sebastian: GK positioning on corners and free kicks</li>
+        </ul>
+      </div>
+    </div>
+    <div class="coaching-tip"><strong>Coaching tip:</strong> Set pieces are free goals waiting to happen at youth level. For corners — just getting the ball into the box is 80% of the job. For Sebastian: teach him to claim crosses by calling "KEEPER!" and coming out confidently. Decision-making drills are the most important thing at this age — more valuable than any skill.</div>
+  </div>
+
+  <!-- Week 13 -->
+  <div class="session-card">
+    <div class="session-meta">
+      <span class="session-week">Week 13</span>
+      <span class="session-date">Saturday, June 27</span>
+    </div>
+    <h3>Family Tournament</h3>
+    <div class="session-grid">
+      <div class="session-block full">
+        <h4>The Plan <span class="time-badge">50 min</span></h4>
+        <ul>
+          <li><strong>Skills challenge (15 min):</strong> Dribble relay, shooting accuracy, juggling count, 1v1 moves showcase, GK save challenge</li>
+          <li><strong>Mini tournament (25 min):</strong> Round-robin 1v1s and 2v2s. Keep score! Mix up the teams: parents vs kids, boys vs girls, age handicaps</li>
+          <li><strong>Awards & celebration (10 min):</strong> Best goal, best save (Sebastian!), best move, most improved, and a treat</li>
+        </ul>
+      </div>
+    </div>
+    <div class="coaching-tip"><strong>Coaching tip:</strong> Make it feel like an event — bring music, keep score on a whiteboard, maybe film the highlights. Let the kids win (but not too obviously). This day is about celebrating 13 weeks of work and making them want to keep playing. Every person gets recognized for something specific they improved at.</div>
+  </div>
+
+</section>
+
+</main>
+
+<footer>
+  <p><strong>Spring Family Soccer</strong> · Coaches: Andres & Maria</p>
+  <p style="margin-top: 0.5rem;">13 Weeks · April 4 – June 27, 2026 · Saturdays</p>
+</footer>
+
+<script>
+document.querySelectorAll('.phase-nav a').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const id = a.getAttribute('href').slice(1);
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    document.querySelectorAll('.phase-nav a').forEach(x => x.classList.remove('active'));
+    a.classList.add('active');
+  });
+});
+
+const sections = document.querySelectorAll('.phase');
+const navLinks = document.querySelectorAll('.phase-nav a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => {
+    if (window.scrollY >= s.offsetTop - 120) current = s.id;
+  });
+  navLinks.forEach(a => {
+    a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+  });
+});
+</script>
+
+</body>
+</html>
