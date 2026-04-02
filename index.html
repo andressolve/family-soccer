@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spring Family Soccer</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --dk: #1B2A4A;
+  --md: #2C4A7C;
+  --ac: #D4A843;
+  --lt: #EAF0FA;
+  --bg: #F8F9FC;
+  --card: #FFFFFF;
+  --text: #1E2A3A;
+  --muted: #5A6B7F;
+  --border: #DDE4EE;
+  --green: #2D8B57;
+  --green-lt: #E6F5ED;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.site-header {
+  background: var(--dk);
+  padding: 3rem 2rem 2.5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.site-header::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -20%;
+  width: 140%;
+  height: 200%;
+  background: radial-gradient(ellipse at 30% 50%, rgba(212,168,67,0.1) 0%, transparent 60%);
+  pointer-events: none;
+}
+.site-header h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 2.6rem;
+  color: #fff;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.3rem;
+  position: relative;
+}
+.site-header .subtitle {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.15rem;
+  color: var(--ac);
+  font-style: italic;
+  opacity: 0.9;
+  position: relative;
+}
+.site-header .players {
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.7);
+  margin-top: 0.8rem;
+  position: relative;
+}
+.site-header .tagline {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.4);
+  margin-top: 0.5rem;
+  position: relative;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.phase-nav {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1.2rem 2rem;
+  background: var(--card);
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.phase-nav a {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 100px;
+  transition: all 0.2s;
+}
+.phase-nav a:hover, .phase-nav a.active {
+  background: var(--lt);
+  color: var(--dk);
+}
+
+main {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+}
+
+.month {
+  margin-bottom: 3rem;
+}
+.month-header {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 0.3rem;
+  padding-top: 2rem;
+  flex-wrap: wrap;
+}
+.month-header h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.6rem;
+  color: var(--dk);
+}
+.month-header .month-tag {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--md);
+  background: var(--lt);
+  padding: 0.25rem 0.75rem;
+  border-radius: 100px;
+}
+.month-desc {
+  color: var(--muted);
+  font-size: 0.92rem;
+  margin-bottom: 1.5rem;
+  max-width: 650px;
+}
+
+.week-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.8rem;
+  margin-bottom: 1.2rem;
+  transition: all 0.25s ease;
+}
+.week-card:hover {
+  border-color: var(--ac);
+  box-shadow: 0 4px 24px rgba(27,42,74,0.08);
+  transform: translateY(-2px);
+}
+.week-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.6rem;
+  flex-wrap: wrap;
+}
+.week-num {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ac);
+}
+.week-date {
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+.week-card h3 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.3rem;
+  color: var(--dk);
+  margin-bottom: 0.6rem;
+  line-height: 1.3;
+}
+.week-card h3 .emoji {
+  margin-right: 0.3rem;
+}
+.gk-tag {
+  display: inline-block;
+  font-size: 0.62rem;
+  font-weight: 700;
+  background: var(--green-lt);
+  color: var(--green);
+  padding: 0.2rem 0.6rem;
+  border-radius: 100px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  vertical-align: middle;
+  margin-left: 0.5rem;
+}
+.week-ideas {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 1.2rem;
+}
+.week-ideas li {
+  font-size: 0.9rem;
+  color: var(--text);
+  padding: 0.3rem 0;
+  padding-left: 1.6rem;
+  position: relative;
+  line-height: 1.5;
+}
+.week-ideas li::before {
+  content: attr(data-icon);
+  position: absolute;
+  left: 0;
+  font-size: 1rem;
+}
+.video-embed {
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 0.5rem;
+  aspect-ratio: 16/9;
+  background: var(--lt);
+}
+.video-embed iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+.video-label {
+  font-size: 0.72rem;
+  color: var(--muted);
+  margin-top: 0.4rem;
+  font-style: italic;
+}
+
+.tournament-card {
+  background: linear-gradient(135deg, var(--dk) 0%, #2C4A7C 100%);
+  border: none;
+  color: #fff;
+}
+.tournament-card h3 {
+  color: var(--ac);
+}
+.tournament-card .week-ideas li {
+  color: rgba(255,255,255,0.9);
+}
+.tournament-card .week-ideas li::before {
+  color: var(--ac);
+}
+
+footer {
+  text-align: center;
+  padding: 2rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+  border-top: 1px solid var(--border);
+  margin-top: 2rem;
+}
+
+@media (max-width: 600px) {
+  .site-header h1 { font-size: 2rem; }
+  .phase-nav { gap: 0.25rem; }
+  .phase-nav a { font-size: 0.7rem; padding: 0.4rem 0.7rem; }
+  .week-card { padding: 1.3rem; }
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <h1>Spring Family Soccer</h1>
+  <div class="subtitle">Our 13-Week Training Plan</div>
+  <div class="players">Andres &middot; Maria &middot; Francisco &middot; Sebastian</div>
+  <div class="tagline">Saturdays · April – June 2026</div>
+</header>
+
+<nav class="phase-nav">
+  <a href="#apr">April</a>
+  <a href="#may">May</a>
+  <a href="#jun">June</a>
+</nav>
+
+<main>
+
+<!-- ==================== APRIL ==================== -->
+<section class="month" id="apr">
+  <div class="month-header">
+    <h2>April</h2>
+    <span class="month-tag">Weeks 1–4 · Foundations</span>
+  </div>
+  <p class="month-desc">Getting comfortable with the ball. We learn how to control it, move with it, pass it, and receive it. The building blocks for everything else.</p>
+
+  <!-- Week 1 -->
+  <div class="week-card">
+    <div class="week-meta">
+      <span class="week-num">Week 1</span>
+      <span class="week-date">Saturday, April 4</span>
+    </div>
+    <h3><span class="emoji">&#9917;</span> Ball Mastery</h3>
+    <ul class="week-ideas">
+      <li data-icon="&#127947;">Learn to keep the ball close using toe taps and sole rolls</li>
+      <li data-icon="&#128099;">Get comfortable touching the ball with every part of your foot</li>
+      <li data-icon="&#127942;">Challenge: how many juggles can you do? We'll count your personal best!</li>
+    </ul>
+    <div class="video-embed">
+      <iframe src="https://www.youtube.com/embed/94KuOfMKG2Q" title="Ball Mastery — Toe Taps" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+    </div>
+    <div class="video-label">Watch before Saturday: Toe taps technique</div>
+    <div class="video-embed" style="margin-top: 0.8rem;">
+      <iframe src="https://www.youtube.com/embed/SxI9PjFG_KQ" title="5 Easy Sole Roll Mastery Skills" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+    </div>
+    <div class="video-label">Bonus video: Sole roll mastery exercises</div>
+  </div>
+
+  <!-- Week 2 -->
+  <div class="week-card">
+    <div class="week-meta">
+      <span class="week-num">Week 2</span>
+      <span class="week-date">Saturday, April 11</span>
+    </div>
+    <h3><span class="emoji">&#128131;</span> Dribbling Basics</h3>
+    <ul class="week-ideas">
+      <li data-icon="&#127939;">Dribble with the inside and outside of your foot — keep the ball glued to you</li>
+      <li data-icon="&#128065;">Head up while dribbling — peek at what's around you!</li>
+      <li data-icon="&#129412;">Shadow dribble: one person leads, the other copies every move</li>
+    </ul>
+    <div class="video-embed">
+      <iframe src="https://www.youtube.com/embed/LRW3UpQrgPQ" title="Dribbling Technique — Laces" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+    </div>
+    <div class="video-label">Watch before Saturday: Laces dribbling technique</div>
+  </div>
+
+  <!-- Week 3 -->
+  <div class="week-card">
+    <div class="week-meta">
+      <span class="week-num">Week 3</span>
+      <span class="week-date">Saturday, April 18</span>
+    </div>
+    <h3><span class="emoji">&#129309;</span> Passing</h3>
+    <ul class="week-ideas">
+      <li data-icon="&#127919;">Use the inside of your foot for accurate passes — like a hockey stick!</li>
+      <li data-icon="&#128170;">Lock your ankle and point your toe up for a firm, clean pass</li>
+      <li data-icon="&#9889;">Pass through cone gates — how many can you hit in 2 minutes?</li>
+    </ul>
+    <div class="video-embed">
+      <iframe src="https://www.youtube.com/embed/Sm-u_ESEmjE" title="Passing Technique" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+    </div>
+    <div class="video-label">Watch before Saturday: Inside-foot passing</div>
+  </div>
+
+  <!-- Week 4 -->
+  <div class="week-card">
+    <div class="week-meta">
+      <span class="week-num">Week 4</span>
+      <span class="week-date">Saturday, April 25</span>
+    </div>
+    <h3><span class="emoji">&#129518;</span> First Touch</h3>
+    <ul class="week-ideas">
+      <li data-icon="&#128588;">Soft feet! Cushion the ball when it comes to you — like catching an egg</li>
+      <li data-icon="&#128260;">Receive, turn, and go — control the ball with your back to the passer</li>
+      <li data-icon="&#127936;">Bounce game: control the ball before it bounces twice</li>
+    </ul>
+    <div class="video-embed">
+      <iframe src="https://www.youtube.com/embed/JbOwpq_8CeM" title="5 Essential First Touch Drills" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+    </div>
+    <div class="video-label">Watch before Saturday: 5 essential first touch drills</div>
+  </div>
+
+</section>
+
+<!-- ==================== MAY ==================== -->
+<section class="month" id="may">
+  <div class="month-header">
+    <h2>May</h2>
+    <span class="month-tag">Weeks 5–9 · Skills & Tactics</span>
+  </div>
+  <p class="month-desc">Time to level up. Shooting, tricks, goalkeeping for Sebastian, defending, and how to play together as a team.</p>
+
+  <!-- Week 5 -->
+  <div class="week-card">
+    <div class="week-meta">
+      <span class="week-num">Week 5</span>
+      <span class="week-date">Saturday, May 2</span>
+    </div>
+    <h3><span class="emoji">&#128165;</span> Shooting & Goalkeeping <span class="gk-tag">GK Week</span></h3>
+    <ul class="week-ideas">
+      <li data-icon="&#127919;">Shoot with your laces for power — plant your foot and follow through</li>
+      <li data-icon="&#129349;">Target practice: hit the cones in the corners of the goal</li>
+      <li data-icon="&#129354;">Goalkeeping intro: ready position, "W" hands, and basic saves (Sebastian's time to shine!)</li>
+    </ul>
+    <div class="video-embed">
+      <iframe src="https://www.youtube.com/embed/gVUbhGdUDy8" title="Shooting for Power" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+    </div>
+    <div class="video-label">Watch before Saturday: Shooting technique — striking for power</div>
+  </div>
+
+  <!-- Week 6 -->
+  <div class="week-card">
+    <div class="week-meta">
+      <span class="week-num">Week 6</span>
+      <span class="week-date">Saturday, May 9</span>
+    </div>
+    <h3><span class="emoji">&#10024;</span> 1v1 Moves</h3>
+    <ul class="week-ideas">
+      <li data-icon="&#128131;">Step-over: swing your foot over the ball, push away with the outside</li>
+      <li data-icon="&#9986;">Scissors: circle the ball, then go the opposite way — fake them out!</li>
+      <li data-icon="&#128588;">Body feint: drop your shoulder one way, go the other — sell the fake!</li>
+    </ul>
+    <div class="video-embed">
+      <iframe src="https://www.youtube.com/embed/IaVjCK_ExgI" title="1v1 Moves: Lunge, Stepover, Scissors" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+    </div>
+    <div class="video-label">Watch before Saturday: 1v1 moves — stepover, scissors, and more</div>
+  </div>
+
+  <!-- Week 7 -->
+  <div class="week-card">
+    <div class="week-meta">
+      <span class="week-num">Week 7</span>
+      <span class="week-date">Saturday, May 16</span>
+    </div>
+    <h3><span class="emoji">&#128256;</span> Change of Direction</h3>
+    <ul class="week-ideas">
+      <li data-icon="&#128260;">Inside cut and outside hook — change direction without losing the ball</li>
+      <li data-icon="&#11088;">The Cruyff turn: fake a shot, drag the ball behind you — like the pros!</li>
+      <li data-icon="&#127939;">Cone gauntlet: zig-zag using a different turn at each cone</li>
+    </ul>
+    <div class="video-embed">
+      <iframe src="https://www.youtube.com/embed/FBWyARmm54k" title="Five Turns to Escape Pressure" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+    </div>
+    <div class="video-label">Watch before Saturday: Five turns to escape pressure</div>
+  </div>
+
+  <!-- Week 8 -->
+  <div class="week-card">
+    <div class="week-meta">
+      <span class="week-num">Week 8</span>
+      <span class="week-date">Saturday, May 23</span>
+    </div>
+    <h3><span class="emoji">&#129349;</span> Goalkeeping Deep Dive <span class="gk-tag">Sebastian's Session</span></h3>
+    <ul class="week-ideas">
+      <li data-icon="&#128079;">Diving saves: start on your knees, build up to standing — be brave!</li>
+      <li data-icon="&#128080;">Catching technique: "W" hands for high balls, scoop for low balls</li>
+      <li data-icon="&#128099;">GK footwork: shuffle along the line, stay balanced, never cross your feet</li>
+      <li data-icon="&#128640;">1v1 saves: come out, make yourself BIG, and narrow the angle</li>
+    </ul>
+    <div class="video-embed">
+      <iframe src="https://www.youtube.com/embed/LsVC24f-6Kc" title="Goalkeeper Handling — Chest & Head Height" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+    </div>
+    <div class="video-label">Watch before Saturday: Goalkeeper catching and handling</div>
+  </div>
+
+  <!-- Week 9 -->
+  <div class="week-card">
+    <div class="week-meta">
+      <span class="week-num">Week 9</span>
+      <span class="week-date">Saturday, May 30</span>
+    </div>
+    <h3><span class="emoji">&#128737;</span> Defending</h3>
+    <ul class="week-ideas">
+      <li data-icon="&#129504;">Stay on your feet! Don't dive in — be patient and wait for the right moment</li>
+      <li data-icon="&#128064;">Jockeying: keep your body between the attacker and the goal</li>
+      <li data-icon="&#128227;">Sebastian as GK: learn to shout directions to your defenders — be the boss!</li>
+    </ul>
+    <div class="video-embed">
+      <iframe src="https://www.youtube.com/embed/9aW9y3Lzt50" title="1v1 Defending Drill" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+    </div>
+    <div class="video-label">Watch before Saturday: 1v1 defending drill</div>
+  </div>
+
+</section>
+
+<!-- ==================== JUNE ==================== -->
+<section class="month" id="jun">
+  <div class="month-header">
+    <h2>June</h2>
+    <span class="month-tag">Weeks 10–13 · Game Time</span>
+  </div>
+  <p class="month-desc">Put it all together! Team play, real game situations, and a family tournament to celebrate everything we've learned.</p>
+
+  <!-- Week 10 -->
+  <div class="week-card">
+    <div class="week-meta">
+      <span class="week-num">Week 10</span>
+      <span class="week-date">Saturday, June 6</span>
+    </div>
+    <h3><span class="emoji">&#128101;</span> Combination Play</h3>
+    <ul class="week-ideas">
+      <li data-icon="&#128640;">The wall pass (give-and-go): pass, sprint, receive — the ultimate team move!</li>
+      <li data-icon="&#129309;">Overlap runs: pass wide, then run around your teammate for a return ball</li>
+      <li data-icon="&#129504;">2v1 attacks: use the extra player to create an advantage</li>
+    </ul>
+    <div class="video-embed">
+      <iframe src="https://www.youtube.com/embed/LoJ5dsFz59s" title="Wall Ball Workout" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+    </div>
+    <div class="video-label">Watch before Saturday: Wall pass and combination play</div>
+  </div>
+
+  <!-- Week 11 -->
+  <div class="week-card">
+    <div class="week-meta">
+      <span class="week-num">Week 11</span>
+      <span class="week-date">Saturday, June 13</span>
+    </div>
+    <h3><span class="emoji">&#127918;</span> Small-Sided Games</h3>
+    <ul class="week-ideas">
+      <li data-icon="&#128260;">Rondos: keep the ball away from the defender — quick thinking!</li>
+      <li data-icon="&#127942;">2v2 mini tournament: first to 3 goals wins — game on!</li>
+      <li data-icon="&#129504;">Game awareness: "freeze!" — where should you be? What are your options?</li>
+    </ul>
+    <div class="video-embed">
+      <iframe src="https://www.youtube.com/embed/OCVCB4G7rFw" title="Fun Soccer Dribbling Game" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+    </div>
+    <div class="video-label">Watch before Saturday: Fun small-sided soccer game</div>
+  </div>
+
+  <!-- Week 12 -->
+  <div class="week-card">
+    <div class="week-meta">
+      <span class="week-num">Week 12</span>
+      <span class="week-date">Saturday, June 20</span>
+    </div>
+    <h3><span class="emoji">&#127919;</span> Set Pieces & Game Situations</h3>
+    <ul class="week-ideas">
+      <li data-icon="&#128204;">Corner kicks: deliver the ball into the box and attack it!</li>
+      <li data-icon="&#9917;">Free kicks: pick your spot and aim for the corners</li>
+      <li data-icon="&#129504;">Decision time: should you pass or dribble? Read the game!</li>
+    </ul>
+    <div class="video-label" style="margin-top: 0; color: var(--md); font-style: normal; font-weight: 500; font-size: 0.82rem; background: var(--lt); padding: 0.8rem 1rem; border-radius: 8px;">No video this week — we'll practice these together on the field!</div>
+  </div>
+
+  <!-- Week 13 -->
+  <div class="week-card tournament-card">
+    <div class="week-meta">
+      <span class="week-num" style="color: var(--ac);">Week 13</span>
+      <span class="week-date" style="color: rgba(255,255,255,0.6);">Saturday, June 27</span>
+    </div>
+    <h3><span class="emoji">&#127942;</span> Family Tournament!</h3>
+    <ul class="week-ideas">
+      <li data-icon="&#127947;">Skills challenge: dribble relay, shooting accuracy, juggling record</li>
+      <li data-icon="&#129349;">GK save challenge: how many can Sebastian stop?</li>
+      <li data-icon="&#9917;">Mini tournament: parents vs. kids, mixed teams, 1v1 and 2v2</li>
+      <li data-icon="&#127881;">Awards ceremony: best goal, best save, best move, most improved!</li>
+    </ul>
+    <div class="video-embed">
+      <iframe src="https://www.youtube.com/embed/0dRzY6E8X8A" title="Fun Rondo Tag Game" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+    </div>
+    <div class="video-label" style="color: rgba(255,255,255,0.5);">Get pumped: Fun rondo game to warm up for tournament day</div>
+  </div>
+
+</section>
+
+</main>
+
+<footer>
+  <p><strong>Spring Family Soccer</strong> &middot; The Rojas-Mejia Family</p>
+  <p style="margin-top: 0.5rem;">13 Weeks &middot; Saturdays &middot; April 4 – June 27, 2026</p>
+</footer>
+
+<script>
+document.querySelectorAll('.phase-nav a').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const id = a.getAttribute('href').slice(1);
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    document.querySelectorAll('.phase-nav a').forEach(x => x.classList.remove('active'));
+    a.classList.add('active');
+  });
+});
+
+const sections = document.querySelectorAll('.month');
+const navLinks = document.querySelectorAll('.phase-nav a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => {
+    if (window.scrollY >= s.offsetTop - 120) current = s.id;
+  });
+  navLinks.forEach(a => {
+    a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+  });
+});
+</script>
+
+</body>
+</html>
