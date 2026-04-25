@@ -145,7 +145,7 @@ main {
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 1.8rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   transition: all 0.25s ease;
 }
 .session-card:hover {
@@ -178,16 +178,30 @@ main {
   margin-bottom: 0.75rem;
   line-height: 1.3;
 }
+.equipment-box {
+  background: var(--lt);
+  border-radius: 8px;
+  padding: 0.7rem 1rem;
+  margin-bottom: 1rem;
+  font-size: 0.8rem;
+  color: var(--md);
+}
+.equipment-box strong {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+}
 .session-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 1rem;
   margin-bottom: 1rem;
 }
 .session-block {
   background: var(--bg);
   border-radius: 8px;
-  padding: 1rem;
+  padding: 1.2rem;
 }
 .session-block.full {
   grid-column: 1 / -1;
@@ -198,10 +212,58 @@ main {
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--md);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.6rem;
   display: flex;
   align-items: center;
   gap: 0.4rem;
+}
+.drill {
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+.drill:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+.drill-name {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--dk);
+  margin-bottom: 0.3rem;
+}
+.drill-desc {
+  font-size: 0.82rem;
+  color: var(--text);
+  line-height: 1.6;
+  margin-bottom: 0.4rem;
+}
+.drill-steps {
+  list-style: none;
+  padding: 0;
+  margin: 0.4rem 0;
+}
+.drill-steps li {
+  font-size: 0.82rem;
+  color: var(--text);
+  padding: 0.15rem 0 0.15rem 1.4rem;
+  position: relative;
+  line-height: 1.5;
+}
+.drill-steps li::before {
+  content: attr(data-step);
+  position: absolute;
+  left: 0;
+  font-weight: 700;
+  color: var(--ac);
+  font-size: 0.75rem;
+}
+.drill-watch {
+  font-size: 0.78rem;
+  color: var(--green);
+  font-weight: 500;
+  margin-top: 0.3rem;
 }
 .session-block ul {
   list-style: none;
@@ -270,7 +332,6 @@ footer {
 
 @media (max-width: 600px) {
   .site-header h1 { font-size: 1.8rem; }
-  .session-grid { grid-template-columns: 1fr; }
   .phase-nav { gap: 0.25rem; }
   .phase-nav a { font-size: 0.7rem; padding: 0.4rem 0.7rem; }
 }
@@ -300,169 +361,458 @@ footer {
   </div>
   <p class="phase-desc">Build comfort on the ball. Every session follows the same rhythm: warm-up, main skill work, scrimmage, cool-down. Keep it fun — at 7 and 9, enjoyment = repetition = improvement.</p>
 
-  <!-- Week 1 -->
+  <!-- ===== WEEK 1 ===== -->
   <div class="session-card">
     <div class="session-meta">
       <span class="session-week">Week 1</span>
       <span class="session-date">Saturday, April 4</span>
     </div>
     <h3>Ball Mastery</h3>
+    <div class="equipment-box"><strong>Bring:</strong> 1 ball per person, 8 cones (or water bottles), 1 whistle</div>
+
     <div class="session-grid">
       <div class="session-block">
         <h4>Warm-Up <span class="time-badge">10 min</span></h4>
-        <ul>
-          <li>Jog with ball at feet — stop on whistle</li>
-          <li>Toe taps on top of ball (30 sec each foot)</li>
-          <li>Side-to-side rolls with sole of foot</li>
-        </ul>
+
+        <div class="drill">
+          <div class="drill-name">Jog & Freeze</div>
+          <div class="drill-desc">Everyone dribbles their ball freely inside a 15m x 15m square (mark corners with cones). When you blow the whistle, everyone stops the ball dead under the sole of their foot. Blow again to restart.</div>
+          <ol class="drill-steps">
+            <li data-step="1. ">Set up a square with 4 cones, roughly 15 big steps per side</li>
+            <li data-step="2. ">Everyone starts inside with a ball at their feet</li>
+            <li data-step="3. ">Dribble gently — try not to bump into each other</li>
+            <li data-step="4. ">Whistle = freeze! Stop the ball under your sole. Last one to stop does 3 jumping jacks</li>
+          </ol>
+        </div>
+
+        <div class="drill">
+          <div class="drill-name">Toe Taps</div>
+          <div class="drill-desc">Stand behind the ball. Alternate tapping the top of the ball lightly with the sole of each foot — left, right, left, right — like running in place on top of the ball. The ball should barely move.</div>
+          <ol class="drill-steps">
+            <li data-step="1. ">Ball is still on the ground in front of you</li>
+            <li data-step="2. ">Tap the top of the ball with the bottom of your right foot, then immediately switch to your left</li>
+            <li data-step="3. ">Stay on the balls of your feet (bouncy), keep a rhythm</li>
+            <li data-step="4. ">Do 30 seconds, rest 10, repeat. Count how many taps!</li>
+          </ol>
+          <div class="drill-watch">Watch for: the ball rolling away. It should stay in the same spot. If it moves, they're pushing too hard — lighter touches.</div>
+        </div>
+
+        <div class="drill">
+          <div class="drill-name">Side-to-Side Sole Rolls</div>
+          <div class="drill-desc">Place sole of one foot on top of the ball and roll it sideways to the other foot. The other foot stops it, then rolls it back. Think of it like rolling a rolling pin side to side.</div>
+          <ol class="drill-steps">
+            <li data-step="1. ">Stand with feet shoulder-width apart, ball between your feet</li>
+            <li data-step="2. ">Place the sole of your right foot on top of the ball</li>
+            <li data-step="3. ">Roll the ball to the left using the bottom of your foot</li>
+            <li data-step="4. ">Stop it with the sole of your left foot, then roll it back</li>
+            <li data-step="5. ">Keep your body balanced and upright — don't lean</li>
+          </ol>
+          <div class="drill-watch">Watch for: using the toes instead of the sole. The bottom/middle of the foot should be on top of the ball.</div>
+        </div>
       </div>
+
       <div class="session-block">
         <h4>Main Drills <span class="time-badge">20 min</span></h4>
-        <ul>
-          <li><strong>Sole rolls:</strong> Roll ball forward/back, side to side — both feet</li>
-          <li><strong>Inside-outside touches:</strong> Tap ball between feet while moving forward</li>
-          <li><strong>Ball mastery square:</strong> Set up 5m square, do different touches along each side</li>
-        </ul>
+
+        <div class="drill">
+          <div class="drill-name">Sole Rolls — Forward & Back</div>
+          <div class="drill-desc">Same idea as the warm-up sole rolls but now rolling the ball forward and backward (not sideways). Place sole on top of ball, roll it forward about 1 step, then drag it back toward you.</div>
+          <ol class="drill-steps">
+            <li data-step="1. ">Stand with ball in front of your right foot</li>
+            <li data-step="2. ">Place sole on top of ball, push it gently forward about 1 step</li>
+            <li data-step="3. ">Without lifting your foot off the ball, drag it back toward you</li>
+            <li data-step="4. ">Do 10 with right foot, then 10 with left foot</li>
+            <li data-step="5. ">Now try moving forward while doing it: push-roll forward, drag back, take a step, repeat</li>
+          </ol>
+          <div class="drill-watch">Watch for: the ball escaping. They should keep gentle downward pressure — not stamping on the ball, but not so light it slips away.</div>
+        </div>
+
+        <div class="drill">
+          <div class="drill-name">Inside-Outside Touches</div>
+          <div class="drill-desc">Tap the ball back and forth between your feet while standing still, then while walking forward. Use the inside of each foot to push the ball to the other foot. Think of it like a little zig-zag between your feet.</div>
+          <ol class="drill-steps">
+            <li data-step="1. ">Ball between your feet, standing still</li>
+            <li data-step="2. ">Use the INSIDE of your right foot (the arch area) to tap the ball toward your left foot</li>
+            <li data-step="3. ">Use the INSIDE of your left foot to tap it back</li>
+            <li data-step="4. ">Keep a steady rhythm — tap, tap, tap, tap</li>
+            <li data-step="5. ">Once comfortable, start walking forward slowly while doing it</li>
+            <li data-step="6. ">Add the outside of the foot: tap with inside, then push with outside of the same foot to redirect</li>
+          </ol>
+          <div class="drill-watch">Watch for: big heavy touches that send the ball too far. Touches should be soft — the ball stays within reach at all times.</div>
+        </div>
+
+        <div class="drill">
+          <div class="drill-name">Ball Mastery Square</div>
+          <div class="drill-desc">Set up a 5m x 5m square with cones. Each side of the square, you do a different touch. This gives structure and makes them practice multiple skills in one drill.</div>
+          <ol class="drill-steps">
+            <li data-step="1. ">Set up a small square (5 big steps per side) with 4 cones</li>
+            <li data-step="2. ">Side 1: Sole rolls forward — roll ball with bottom of foot as you walk along</li>
+            <li data-step="3. ">Side 2: Inside-outside touches — zig-zag the ball between your feet</li>
+            <li data-step="4. ">Side 3: Toe taps — do toe taps while moving sideways along the line</li>
+            <li data-step="5. ">Side 4: Free choice — pick whatever touch you want</li>
+            <li data-step="6. ">Go around 3 times, try to get faster each lap</li>
+          </ol>
+        </div>
       </div>
+
       <div class="session-block">
         <h4>Scrimmage <span class="time-badge">15 min</span></h4>
-        <ul>
-          <li>2v2 in small area (parents vs kids or mixed teams)</li>
-          <li>Rule: must do 3 touches before passing</li>
-        </ul>
+
+        <div class="drill">
+          <div class="drill-name">2v2 with 3-Touch Rule</div>
+          <div class="drill-desc">A mini game! Two teams of two in a small area with small goals (use cones 1.5m apart for goals). The twist: before you can pass, you must take at least 3 touches. This forces them to dribble and use what they just learned.</div>
+          <ol class="drill-steps">
+            <li data-step="1. ">Mark a small pitch: about 15m x 10m. Put 2 cone goals at each end (each goal = 2 cones about 1.5m apart)</li>
+            <li data-step="2. ">Teams: parents vs kids OR one parent + one kid per team (mix it up)</li>
+            <li data-step="3. ">Rule: you must take at least 3 touches before you can pass or shoot</li>
+            <li data-step="4. ">No goalkeepers — score by rolling the ball through the cone goal on the ground</li>
+            <li data-step="5. ">Play to 5 goals, then switch teams</li>
+          </ol>
+        </div>
       </div>
+
       <div class="session-block">
         <h4>Cool-Down <span class="time-badge">5 min</span></h4>
-        <ul>
-          <li>Juggling challenge (count personal best)</li>
-          <li>Light stretching in circle</li>
-        </ul>
+
+        <div class="drill">
+          <div class="drill-name">Juggling Challenge</div>
+          <div class="drill-desc">Drop the ball from your hands onto your foot and kick it back up. Count how many times you can keep it in the air. This is HARD at first — even 1 is great for a 7-year-old!</div>
+          <ol class="drill-steps">
+            <li data-step="1. ">Hold ball in both hands at waist height</li>
+            <li data-step="2. ">Drop it (don't throw!) and kick it back up with the top of your foot (laces area)</li>
+            <li data-step="3. ">Catch it. That's 1! Try for 2, then 3...</li>
+            <li data-step="4. ">Write down everyone's personal best — we'll try to beat it each week</li>
+          </ol>
+          <div class="drill-watch">Watch for: pointing toes down too much. The foot should be slightly angled so the ball goes up, not forward. Lock the ankle.</div>
+        </div>
+
+        <div class="drill">
+          <div class="drill-name">Stretching Circle</div>
+          <div class="drill-desc">Everyone in a circle. Each person picks one stretch and everyone copies. Hold each stretch for 15 seconds: hamstrings (touch toes), quads (pull foot behind you), calves (push against wall or lean on each other), and hip flexors (big lunge step).</div>
+        </div>
       </div>
     </div>
-    <div class="coaching-tip"><strong>Coaching tip:</strong> Don't correct too much in Week 1. Let them explore the ball. Praise effort, not outcomes. Sebastian may want to use his hands — let him do a short GK warm-up at the end if he asks.</div>
+
+    <div class="coaching-tip"><strong>Coaching tip:</strong> Don't correct too much in Week 1. Let them explore the ball. Praise effort, not outcomes. "Great try!" beats "No, not like that." Sebastian may want to use his hands — let him do a short GK warm-up at the end if he asks.</div>
   </div>
 
-  <!-- Week 2 -->
+  <!-- ===== WEEK 2 ===== -->
   <div class="session-card">
     <div class="session-meta">
       <span class="session-week">Week 2</span>
       <span class="session-date">Saturday, April 11</span>
     </div>
     <h3>Dribbling Basics</h3>
+    <div class="equipment-box"><strong>Bring:</strong> 1 ball per person, 10–12 cones, whistle</div>
+
     <div class="session-grid">
       <div class="session-block">
         <h4>Warm-Up <span class="time-badge">10 min</span></h4>
-        <ul>
-          <li>Dribble freely in a grid — avoid each other</li>
-          <li>"Traffic light" game: green = dribble, yellow = slow, red = stop with sole on ball</li>
-        </ul>
+
+        <div class="drill">
+          <div class="drill-name">Free Dribble in Grid</div>
+          <div class="drill-desc">Same 15m x 15m square as Week 1. Everyone dribbles around inside, trying to avoid bumping into each other. This teaches awareness — looking up while dribbling.</div>
+          <ol class="drill-steps">
+            <li data-step="1. ">Set up 15m x 15m square</li>
+            <li data-step="2. ">Everyone dribbles their own ball inside the square</li>
+            <li data-step="3. ">Try not to hit anyone else or let your ball leave the square</li>
+            <li data-step="4. ">If your ball goes out, do 5 toe taps before coming back in</li>
+          </ol>
+        </div>
+
+        <div class="drill">
+          <div class="drill-name">Traffic Light Game</div>
+          <div class="drill-desc">Coach calls out colours while everyone dribbles. GREEN = dribble fast. YELLOW = dribble slow. RED = stop ball under sole. Kids love this one!</div>
+          <ol class="drill-steps">
+            <li data-step="1. ">Same grid. Everyone dribbling</li>
+            <li data-step="2. ">Shout "GREEN!" — dribble as fast as you can while keeping control</li>
+            <li data-step="3. ">Shout "YELLOW!" — slow down, tiny touches</li>
+            <li data-step="4. ">Shout "RED!" — stop the ball dead under your sole, freeze your body</li>
+            <li data-step="5. ">Mix it up randomly. Speed up the calls to make it harder</li>
+          </ol>
+          <div class="drill-watch">Watch for: when they go fast, the ball gets away from them. Emphasize "the ball stays close, like it's on a leash."</div>
+        </div>
       </div>
+
       <div class="session-block">
         <h4>Main Drills <span class="time-badge">20 min</span></h4>
-        <ul>
-          <li><strong>Cone weave:</strong> Dribble through cones using inside of foot only, then outside only</li>
-          <li><strong>Close control relay:</strong> Dribble to cone and back, keep ball within arm's length</li>
-          <li><strong>Shadow dribble:</strong> One leads, other follows and copies their moves</li>
-        </ul>
+
+        <div class="drill">
+          <div class="drill-name">Cone Weave</div>
+          <div class="drill-desc">Set up a line of 6 cones in a straight row, about 1.5m apart. Dribble in and out through the cones like a slalom skier. This teaches close ball control and using different parts of your foot.</div>
+          <ol class="drill-steps">
+            <li data-step="1. ">Line up 6 cones in a straight line, about 1.5m apart (roughly 2 big steps between each)</li>
+            <li data-step="2. ">Start at one end with the ball</li>
+            <li data-step="3. ">Round 1: Weave through using ONLY the inside of your foot (the arch) — push the ball gently around each cone</li>
+            <li data-step="4. ">Jog back to start. Round 2: use ONLY the outside of your foot — this is harder! Push with the pinky-toe side</li>
+            <li data-step="5. ">Round 3: alternate — inside around one cone, outside around the next</li>
+            <li data-step="6. ">For Sebastian: wider spacing (2m). For Francisco: tighter (1m) to challenge him</li>
+          </ol>
+          <div class="drill-watch">Watch for: kicking the ball ahead and chasing it. The ball should stay within arm's reach at all times. Encourage small, gentle taps.</div>
+        </div>
+
+        <div class="drill">
+          <div class="drill-name">Close Control Relay</div>
+          <div class="drill-desc">A race! Dribble to a cone 10m away and back. But the ball must stay close — if it gets more than an arm's length away, you stop and pull it back before continuing. Speed + control.</div>
+          <ol class="drill-steps">
+            <li data-step="1. ">Place a cone 10m away (about 12 big steps)</li>
+            <li data-step="2. ">Two players line up at the start line with their balls</li>
+            <li data-step="3. ">On "GO!" — dribble to the cone, go around it, dribble back</li>
+            <li data-step="4. ">Rule: if the ball gets more than 1 arm's length from your foot, stop and bring it back before continuing</li>
+            <li data-step="5. ">Do best of 3 races. Winner picks the next warm-up game</li>
+          </ol>
+        </div>
+
+        <div class="drill">
+          <div class="drill-name">Shadow Dribble</div>
+          <div class="drill-desc">One person is the "leader" and dribbles wherever they want — changing speed, stopping, turning. The other person follows behind and copies everything they do. Then switch roles.</div>
+          <ol class="drill-steps">
+            <li data-step="1. ">Pairs: each pair has a ball (only the leader has the ball at first)</li>
+            <li data-step="2. ">Leader dribbles anywhere in the grid — slow, fast, stop, turn, change direction</li>
+            <li data-step="3. ">Follower stays 2 steps behind and copies every move (without a ball at first)</li>
+            <li data-step="4. ">After 2 minutes, switch leader/follower</li>
+            <li data-step="5. ">Challenge version: both have a ball — leader dribbles, follower copies while also controlling their own ball</li>
+          </ol>
+        </div>
       </div>
+
       <div class="session-block">
         <h4>Scrimmage <span class="time-badge">15 min</span></h4>
-        <ul>
-          <li>2v2 — bonus point for dribbling past a player</li>
-          <li>Small goals, no goalkeepers</li>
-        </ul>
+
+        <div class="drill">
+          <div class="drill-name">2v2 with Dribble Bonus</div>
+          <div class="drill-desc">Same setup as Week 1 (small pitch, cone goals). Regular game BUT dribbling past a defender earns a bonus point even if you don't score. This encourages them to try dribbling, not just kicking the ball.</div>
+          <ol class="drill-steps">
+            <li data-step="1. ">Same small pitch as Week 1 (15m x 10m, cone goals)</li>
+            <li data-step="2. ">Goal = 1 point. Dribbling past a defender = 1 bonus point</li>
+            <li data-step="3. ">No goalkeepers — score through the cones on the ground</li>
+            <li data-step="4. ">Play to 10 points (counting both goals and dribble bonuses)</li>
+          </ol>
+        </div>
       </div>
+
       <div class="session-block">
         <h4>Cool-Down <span class="time-badge">5 min</span></h4>
-        <ul>
-          <li>"King of the ring" — everyone dribbles in circle, try to knock others' balls out</li>
-          <li>Stretching</li>
-        </ul>
+
+        <div class="drill">
+          <div class="drill-name">King of the Ring</div>
+          <div class="drill-desc">Everyone dribbles inside a circle (use the grid). While protecting your own ball, try to kick everyone else's ball out of the area. If your ball leaves, you're out. Last one standing wins! Great end-of-session game.</div>
+          <ol class="drill-steps">
+            <li data-step="1. ">Use the 15m x 15m grid (or make it smaller for more chaos)</li>
+            <li data-step="2. ">Everyone dribbles their ball inside</li>
+            <li data-step="3. ">While dribbling, try to kick OTHER people's balls out of the square</li>
+            <li data-step="4. ">If YOUR ball leaves the square, you're eliminated</li>
+            <li data-step="5. ">Last person with their ball still in the square wins!</li>
+            <li data-step="6. ">Parents: go easy but not too easy. Make it competitive enough to be fun</li>
+          </ol>
+        </div>
       </div>
     </div>
-    <div class="coaching-tip"><strong>Coaching tip:</strong> "Head up!" is the #1 cue this week. Have them dribble toward you and call out how many fingers you're holding up. Keep the cone spacing wide for Sebastian, tighter for Francisco.</div>
+
+    <div class="coaching-tip"><strong>Coaching tip:</strong> "Head up!" is the #1 cue this week. Try this trick: while they dribble toward you, hold up 1, 2, or 3 fingers and ask them how many you're showing — forces them to look up! Keep the cone spacing wide for Sebastian (2m), tighter for Francisco (1m).</div>
   </div>
 
-  <!-- Week 3 -->
+  <!-- ===== WEEK 3 ===== -->
   <div class="session-card">
     <div class="session-meta">
       <span class="session-week">Week 3</span>
       <span class="session-date">Saturday, April 18</span>
     </div>
     <h3>Passing</h3>
+    <div class="equipment-box"><strong>Bring:</strong> 1 ball per pair, 10–12 cones, whistle</div>
+
     <div class="session-grid">
       <div class="session-block">
         <h4>Warm-Up <span class="time-badge">10 min</span></h4>
-        <ul>
-          <li>Pairs passing — 3m apart, inside of foot</li>
-          <li>Gradually increase distance as they get comfortable</li>
-        </ul>
+
+        <div class="drill">
+          <div class="drill-name">Pairs Passing — Increasing Distance</div>
+          <div class="drill-desc">Two people face each other, about 3m apart (4 big steps). Pass the ball back and forth using the inside of your foot. After 10 good passes, take one step back. Keep going until it becomes hard to reach each other.</div>
+          <ol class="drill-steps">
+            <li data-step="1. ">Pair up (parent + kid). Stand 3m apart facing each other</li>
+            <li data-step="2. ">Pass using the INSIDE of your foot — the flat arch area, NOT your toe</li>
+            <li data-step="3. ">Plant your non-kicking foot next to the ball, pointing at your partner</li>
+            <li data-step="4. ">Swing kicking foot through the ball, striking with the inside arch</li>
+            <li data-step="5. ">Follow through toward your target (your foot points where the ball goes)</li>
+            <li data-step="6. ">After 10 clean passes, each person takes 1 step back. How far can you get?</li>
+          </ol>
+          <div class="drill-watch">Watch for: toe kicks! Kids naturally kick with their toe. Gently correct: "Use the side of your foot, like a hockey stick hitting a puck." Also watch for floppy ankles — the ankle should be locked firm.</div>
+        </div>
       </div>
+
       <div class="session-block">
         <h4>Main Drills <span class="time-badge">20 min</span></h4>
-        <ul>
-          <li><strong>Gate passing:</strong> Set up cone "gates" — pass through as many as possible in 2 min</li>
-          <li><strong>Triangle passing:</strong> 3 players in triangle, pass and follow your pass</li>
-          <li><strong>Wall pass intro:</strong> Pass to parent, receive back, shoot at goal</li>
-        </ul>
+
+        <div class="drill">
+          <div class="drill-name">Gate Passing</div>
+          <div class="drill-desc">Scatter 6–8 mini "gates" around the grid (each gate = 2 cones about 1m apart). In pairs, try to pass the ball THROUGH as many gates as possible in 2 minutes. One person passes through the gate, the other receives on the other side.</div>
+          <ol class="drill-steps">
+            <li data-step="1. ">Set up 6–8 gates randomly inside the grid (each gate = 2 cones, about 1m apart)</li>
+            <li data-step="2. ">Pairs stand on opposite sides of any gate</li>
+            <li data-step="3. ">Pass through the gate to your partner. If it goes through cleanly, that's 1 point!</li>
+            <li data-step="4. ">After a successful pass, both run to a different gate and try again</li>
+            <li data-step="5. ">Set a timer: 2 minutes. Count your points. Try to beat your score in round 2</li>
+          </ol>
+          <div class="drill-watch">Watch for: rushing. Accuracy matters more than speed. "Slow is smooth, smooth is fast."</div>
+        </div>
+
+        <div class="drill">
+          <div class="drill-name">Triangle Passing</div>
+          <div class="drill-desc">Three people stand in a triangle, about 5m apart. Pass and follow: pass the ball to the next person, then jog to their spot. The ball goes around the triangle while everyone keeps moving. This teaches "pass and move" — the most important habit in soccer.</div>
+          <ol class="drill-steps">
+            <li data-step="1. ">3 players (or use a cone as the 4th "player") form a triangle, 5m sides</li>
+            <li data-step="2. ">Player A passes to Player B</li>
+            <li data-step="3. ">After passing, Player A JOGS to Player B's spot</li>
+            <li data-step="4. ">Player B receives, passes to Player C, then jogs to C's spot</li>
+            <li data-step="5. ">Keep the pattern going — pass, then move to where you passed</li>
+            <li data-step="6. ">Try to keep it smooth and flowing. Speed up gradually</li>
+          </ol>
+          <div class="drill-watch">Watch for: standing still after passing. The whole point is MOVE after you pass. "Pass and GO, never pass and WATCH."</div>
+        </div>
+
+        <div class="drill">
+          <div class="drill-name">Wall Pass Intro</div>
+          <div class="drill-desc">The "wall pass" or "give-and-go" is the most useful move in soccer. Player A passes to Player B (the "wall"), Player B immediately passes it back, and Player A has run forward to receive it in space. Like using a teammate as a wall to bounce the ball off.</div>
+          <ol class="drill-steps">
+            <li data-step="1. ">A parent stands still about 5m in front of a child (the parent is the "wall")</li>
+            <li data-step="2. ">Child passes ball to parent with inside of foot</li>
+            <li data-step="3. ">IMMEDIATELY after passing, child sprints forward past the parent</li>
+            <li data-step="4. ">Parent passes the ball forward into the space ahead of the running child</li>
+            <li data-step="5. ">Child receives the ball on the run and shoots at a cone goal</li>
+            <li data-step="6. ">Key phrase: "Pass it, then SPRINT!" — don't wait to see what happens, go!</li>
+          </ol>
+        </div>
       </div>
+
       <div class="session-block">
         <h4>Scrimmage <span class="time-badge">15 min</span></h4>
-        <ul>
-          <li>2v2 — goal only counts if preceded by a pass</li>
-          <li>Sebastian in goal for last 5 min if he wants</li>
-        </ul>
+
+        <div class="drill">
+          <div class="drill-name">2v2 — Pass to Score</div>
+          <div class="drill-desc">Same small pitch. The rule: a goal only counts if the scorer received a pass before shooting. You can't just dribble and score — you MUST pass to a teammate first. This forces them to use what they learned today.</div>
+          <ol class="drill-steps">
+            <li data-step="1. ">Same pitch as previous weeks</li>
+            <li data-step="2. ">A goal only counts if it came from a pass (not dribbling in solo)</li>
+            <li data-step="3. ">Sebastian can go in goal for the last 5 minutes if he wants</li>
+            <li data-step="4. ">Play to 5 goals</li>
+          </ol>
+        </div>
       </div>
+
       <div class="session-block">
         <h4>Cool-Down <span class="time-badge">5 min</span></h4>
-        <ul>
-          <li>Longest pass challenge — who can pass accurately the farthest?</li>
-          <li>Stretching</li>
-        </ul>
+
+        <div class="drill">
+          <div class="drill-name">Longest Pass Challenge</div>
+          <div class="drill-desc">One at a time, everyone tries to make the longest accurate pass. Put a cone as a target. Step further back each round. Who can hit the target from the farthest distance?</div>
+        </div>
       </div>
     </div>
-    <div class="coaching-tip"><strong>Coaching tip:</strong> "Lock your ankle, toe up" — the inside-foot pass needs a firm ankle. Demo the wrong way (floppy ankle) vs. right way. Kids this age tend to use their toe — gently redirect to the inside of the foot every time.</div>
+
+    <div class="coaching-tip"><strong>Coaching tip:</strong> "Lock your ankle, toe up" — the inside-foot pass needs a firm ankle. Demo the wrong way (floppy ankle, ball goes weakly sideways) vs. right way (locked ankle, firm clean pass). Kids this age naturally use their toe — gently redirect to the inside of the foot every time. Don't get frustrated if it takes weeks. It will click.</div>
   </div>
 
-  <!-- Week 4 -->
+  <!-- ===== WEEK 4 ===== -->
   <div class="session-card">
     <div class="session-meta">
       <span class="session-week">Week 4</span>
       <span class="session-date">Saturday, April 25</span>
     </div>
     <h3>Receiving & First Touch</h3>
+    <div class="equipment-box"><strong>Bring:</strong> 1 ball per pair, 8 cones, whistle</div>
+
     <div class="session-grid">
       <div class="session-block">
         <h4>Warm-Up <span class="time-badge">10 min</span></h4>
-        <ul>
-          <li>Toss ball to each other — receive with inside of foot, sole, thigh</li>
-          <li>"Cushion" the ball — demonstrate killing the ball dead</li>
-        </ul>
+
+        <div class="drill">
+          <div class="drill-name">Toss & Receive</div>
+          <div class="drill-desc">In pairs, one person gently tosses the ball (underhand, waist height) to the other, who must control it with their body before it bounces more than once. Try controlling with different body parts: inside of foot, sole, thigh.</div>
+          <ol class="drill-steps">
+            <li data-step="1. ">Pairs face each other, about 3m apart</li>
+            <li data-step="2. ">Player A holds ball and underhand-tosses it gently to Player B (waist height)</li>
+            <li data-step="3. ">Player B controls it with inside of foot — let the ball hit your foot, then PULL your foot back slightly to cushion it (like catching an egg — soft!)</li>
+            <li data-step="4. ">The ball should land gently at your feet, not bounce away</li>
+            <li data-step="5. ">5 reps with inside of foot, then 5 with the sole (step on it as it bounces), then 5 with the thigh (let it hit mid-thigh and drop to your feet)</li>
+          </ol>
+          <div class="drill-watch">Watch for: stiff legs. The receiving foot/thigh needs to be RELAXED and give way on contact. Think: "catching an egg, not kicking a wall."</div>
+        </div>
       </div>
+
       <div class="session-block">
         <h4>Main Drills <span class="time-badge">20 min</span></h4>
-        <ul>
-          <li><strong>Pass-and-control:</strong> Pairs — pass firmly, receiver takes one touch to control, one touch to pass back</li>
-          <li><strong>Turn drill:</strong> Receive with back to passer, turn and dribble through a cone gate</li>
-          <li><strong>Bounce game:</strong> Throw ball to partner, they control it before it bounces twice</li>
-        </ul>
+
+        <div class="drill">
+          <div class="drill-name">Pass & Control — Two Touch</div>
+          <div class="drill-desc">In pairs, pass the ball firmly to each other. The receiver gets exactly 2 touches: Touch 1 = control the ball (stop it or redirect it). Touch 2 = pass it back. The goal is a clean first touch that sets up a clean pass.</div>
+          <ol class="drill-steps">
+            <li data-step="1. ">Pairs, 5m apart, facing each other</li>
+            <li data-step="2. ">Player A passes firmly (not gently!) with inside of foot</li>
+            <li data-step="3. ">Player B: Touch 1 — cushion the ball with inside of foot to stop it or push it slightly to the side</li>
+            <li data-step="4. ">Player B: Touch 2 — pass it back</li>
+            <li data-step="5. ">Key coaching: the first touch should move the ball into a good position for the pass. Don't just stop it dead — guide it to where you want it</li>
+            <li data-step="6. ">Do 10 each, then try to do it faster</li>
+          </ol>
+          <div class="drill-watch">Watch for: the first touch bouncing too far away. "Soft feet!" — pull the foot back on contact like a cushion absorbing the impact.</div>
+        </div>
+
+        <div class="drill">
+          <div class="drill-name">Turn & Go</div>
+          <div class="drill-desc">The receiver has their BACK to the passer. They receive the ball, turn with it, and dribble through a cone gate. This is a game-realistic skill — you often receive the ball facing the wrong way and need to turn.</div>
+          <ol class="drill-steps">
+            <li data-step="1. ">Set up: a cone gate (2 cones, 1.5m apart) about 5m in front of the receiver</li>
+            <li data-step="2. ">Receiver stands with their back to the passer, facing the cone gate</li>
+            <li data-step="3. ">Passer calls "TURN!" and passes the ball to the receiver's feet</li>
+            <li data-step="4. ">Receiver lets the ball come to one side, takes a touch to control it, turns, and dribbles through the gate</li>
+            <li data-step="5. ">Try turning both ways: touch the ball to the left and spin left, or touch right and spin right</li>
+            <li data-step="6. ">Peek over your shoulder BEFORE the ball arrives to know which way to turn — this is called "checking your shoulder"</li>
+          </ol>
+          <div class="drill-watch">Watch for: not looking before receiving. Encourage peeking over the shoulder. In a real game, this tells you where the defenders are.</div>
+        </div>
+
+        <div class="drill">
+          <div class="drill-name">Bounce Game</div>
+          <div class="drill-desc">Player A tosses the ball in the air toward Player B. Player B must control it with any body part BEFORE it bounces a second time. Toss it at different heights and angles to make it challenging.</div>
+          <ol class="drill-steps">
+            <li data-step="1. ">Pairs, 4m apart</li>
+            <li data-step="2. ">Player A tosses ball in the air (varies height: low, medium, high)</li>
+            <li data-step="3. ">The ball bounces once. Player B must control it before it bounces a SECOND time</li>
+            <li data-step="4. ">Control with whatever works: foot, thigh, chest (chest = let it hit you and drop to your feet)</li>
+            <li data-step="5. ">Score: clean control = 1 point. Control + able to pass it back = 2 points</li>
+            <li data-step="6. ">Play to 10 points then switch roles</li>
+          </ol>
+        </div>
       </div>
+
       <div class="session-block">
         <h4>Scrimmage <span class="time-badge">15 min</span></h4>
-        <ul>
-          <li>3v1 keep-away — one defender, three try to keep the ball</li>
-          <li>Rotate defender every 90 seconds</li>
-        </ul>
+
+        <div class="drill">
+          <div class="drill-name">3v1 Keep-Away (Rondo)</div>
+          <div class="drill-desc">3 players form a triangle and try to keep the ball away from 1 defender in the middle. The 3 outside players pass to each other while the defender tries to intercept. If the defender wins the ball, they swap with whoever made the bad pass. This is the single best small-group drill in soccer — Barcelona uses it every day.</div>
+          <ol class="drill-steps">
+            <li data-step="1. ">Mark a circle or triangle area, about 5m sides</li>
+            <li data-step="2. ">3 players on the outside, 1 defender in the middle</li>
+            <li data-step="3. ">Outside players pass to each other — the defender tries to intercept or touch the ball</li>
+            <li data-step="4. ">If the defender touches the ball, they swap with whoever made the bad pass</li>
+            <li data-step="5. ">Outside players: max 2 touches (one to control, one to pass)</li>
+            <li data-step="6. ">Rotate the defender every 90 seconds regardless so nobody gets stuck</li>
+          </ol>
+          <div class="drill-watch">Watch for: outside players standing still. They should be moving to create passing angles — always giving their teammate a "window" to pass through.</div>
+        </div>
       </div>
+
       <div class="session-block">
         <h4>Cool-Down <span class="time-badge">5 min</span></h4>
-        <ul>
-          <li>Juggling challenge — beat last week's record</li>
-          <li>Stretching</li>
-        </ul>
+
+        <div class="drill">
+          <div class="drill-name">Juggling Challenge — Beat Last Week</div>
+          <div class="drill-desc">Same as Week 1. Drop from hands, kick up, catch. Try to beat your personal record from last week. Track everyone's progress!</div>
+        </div>
       </div>
     </div>
-    <div class="coaching-tip"><strong>Coaching tip:</strong> "Soft feet!" — the ball should land like it's hitting a pillow, not a wall. The key cue is to pull the foot back slightly on contact. For Francisco, add the challenge of controlling while moving. Sebastian can practice catching (GK receiving).</div>
+
+    <div class="coaching-tip"><strong>Coaching tip:</strong> "Soft feet!" — the ball should land like it's hitting a pillow, not a wall. The key cue is to pull the foot back slightly on contact. For Francisco, add the challenge of controlling while moving. Sebastian can practice catching (GK receiving) — same principle of soft hands. Praise any first touch that stays within reach, even if it's not perfect.</div>
   </div>
 
 </section>
@@ -475,217 +825,533 @@ footer {
   </div>
   <p class="phase-desc">Build on the fundamentals. Introduce shooting, moves, defending, and Sebastian's goalkeeping. Sessions get more game-like as confidence grows.</p>
 
-  <!-- Week 5 -->
+  <!-- ===== WEEK 5 ===== -->
   <div class="session-card">
     <div class="session-meta">
       <span class="session-week">Week 5</span>
       <span class="session-date">Saturday, May 2</span>
     </div>
     <h3>Shooting & Goalkeeping Intro <span class="gk-badge">GK Session</span></h3>
+    <div class="equipment-box"><strong>Bring:</strong> 2–3 balls, 6 cones (for goal + targets), GK gloves for Sebastian if he has them (optional)</div>
+
     <div class="session-grid">
       <div class="session-block">
         <h4>Warm-Up <span class="time-badge">10 min</span></h4>
-        <ul>
-          <li>Passing pairs — 10 passes each, quick feet</li>
-          <li>Light jog with dynamic stretches</li>
-        </ul>
+
+        <div class="drill">
+          <div class="drill-name">Passing Pairs + Dynamic Stretches</div>
+          <div class="drill-desc">Quick passing pairs (inside of foot, 10 each side) to get warmed up. Then dynamic stretches: high knees, butt kicks, side shuffles, and leg swings (swing leg forward and back, holding onto a partner for balance). These stretches prep the legs for shooting.</div>
+        </div>
       </div>
+
       <div class="session-block">
         <h4>Main Drills — Shooting <span class="time-badge">10 min</span></h4>
-        <ul>
-          <li><strong>Laces strike:</strong> Demo planting foot beside ball, striking with laces, following through</li>
-          <li><strong>Target practice:</strong> Cones in corners of goal — hit the targets</li>
-          <li>Shoot from different angles and distances</li>
-        </ul>
+
+        <div class="drill">
+          <div class="drill-name">Laces Strike Technique</div>
+          <div class="drill-desc">Shooting uses the top of your foot (laces area), not the inside or toe. The key is the plant foot position and following through.</div>
+          <ol class="drill-steps">
+            <li data-step="1. ">Place the ball still on the ground. Stand 2 steps behind it</li>
+            <li data-step="2. ">Step forward and plant your non-kicking foot RIGHT BESIDE the ball, toes pointing at the target</li>
+            <li data-step="3. ">Swing your kicking leg through, striking the MIDDLE of the ball with your LACES (top of foot where the shoelaces are)</li>
+            <li data-step="4. ">Point your toes DOWN and lock your ankle firm</li>
+            <li data-step="5. ">Follow through — your kicking leg should swing all the way up after contact</li>
+            <li data-step="6. ">Land on your kicking foot (you'll naturally hop forward slightly)</li>
+          </ol>
+          <div class="drill-watch">Watch for: planting the foot too far behind the ball (causes sky-high shots) or too far to the side (causes the ball to slice sideways). Plant foot should be RIGHT NEXT to the ball. Also: toe kicks — remind them "laces, not toes!"</div>
+        </div>
+
+        <div class="drill">
+          <div class="drill-name">Target Practice</div>
+          <div class="drill-desc">Set up a goal with cones (about 3m wide). Place a cone inside each bottom corner — these are the targets. Take turns shooting from 8m away (about 10 big steps). Score points for hitting the targets.</div>
+          <ol class="drill-steps">
+            <li data-step="1. ">Make a goal: 2 tall cones 3m apart. Place 1 target cone in each bottom corner</li>
+            <li data-step="2. ">Shooting line at 8m (10 big steps away)</li>
+            <li data-step="3. ">Take turns: 5 shots each. 1 point = on target (would go in). 3 points = hit a corner cone!</li>
+            <li data-step="4. ">Try from different angles: straight on, left side, right side</li>
+            <li data-step="5. ">Reminder: "Your plant foot points where you want the ball to go"</li>
+          </ol>
+        </div>
       </div>
+
       <div class="session-block">
         <h4>Main Drills — Goalkeeping <span class="time-badge">10 min</span></h4>
-        <ul>
-          <li><strong>Ready position:</strong> Feet shoulder-width, knees bent, hands up, weight forward</li>
-          <li><strong>Catching:</strong> "W" shape hands for high balls, scoop for low balls</li>
-          <li><strong>Basic saves:</strong> Roll balls to GK from 5m — set position, then save</li>
-          <li>Everyone takes turns in goal, Sebastian gets extra reps</li>
-        </ul>
+
+        <div class="drill">
+          <div class="drill-name">Ready Position</div>
+          <div class="drill-desc">The goalkeeper's starting stance before every save. This is the foundation of all goalkeeping.</div>
+          <ol class="drill-steps">
+            <li data-step="1. ">Stand in the middle of the goal, facing the ball</li>
+            <li data-step="2. ">Feet shoulder-width apart, weight on the balls of your feet (not your heels)</li>
+            <li data-step="3. ">Knees slightly bent — like you're about to sit on a high stool</li>
+            <li data-step="4. ">Hands up at waist height, palms facing forward, fingers spread</li>
+            <li data-step="5. ">Lean slightly forward — you should feel like you could spring in any direction</li>
+            <li data-step="6. ">Practice: hold this position, and on "GO!" shuffle 2 steps left, set, then 2 steps right, set</li>
+          </ol>
+        </div>
+
+        <div class="drill">
+          <div class="drill-name">"W" Hands Catching</div>
+          <div class="drill-desc">For balls at chest height and above, catch with both hands making a "W" shape behind the ball. Thumbs almost touching, fingers spread wide. The ball sits in the web of your fingers, not your palms.</div>
+          <ol class="drill-steps">
+            <li data-step="1. ">Hold your hands up in front of your face, thumbs almost touching, fingers spread</li>
+            <li data-step="2. ">Look at the shape your thumbs and index fingers make — it's a "W"</li>
+            <li data-step="3. ">This is how you catch any ball above your waist</li>
+            <li data-step="4. ">Practice: partner tosses ball gently to chest height. Catch with W-hands, pull ball into your chest</li>
+            <li data-step="5. ">For LOW balls (ground level): scoop — get down on one knee, hands scoop under the ball, bring it into your body</li>
+            <li data-step="6. ">Do 5 high catches, 5 low scoops. Alternate</li>
+          </ol>
+          <div class="drill-watch">Watch for: trying to clap the ball between palms. Fingers should be BEHIND the ball, not on the sides. And always pull the ball into your body after catching — never leave it out in front.</div>
+        </div>
+
+        <div class="drill">
+          <div class="drill-name">Basic Shot-Stopping</div>
+          <div class="drill-desc">Gentle shots rolled along the ground from 5m away. GK gets set in ready position, then saves. Everyone takes turns in goal, but Sebastian gets extra reps.</div>
+          <ol class="drill-steps">
+            <li data-step="1. ">GK stands in goal in ready position</li>
+            <li data-step="2. ">Shooter stands 5m away and ROLLS the ball firmly along the ground (not kicking yet)</li>
+            <li data-step="3. ">GK gets down and scoops the ball — get your body BEHIND the ball, not just hands</li>
+            <li data-step="4. ">After 5 rolled saves, progress to gentle kicked shots along the ground</li>
+            <li data-step="5. ">Then try shots at different heights: ground, waist, chest</li>
+            <li data-step="6. ">Everyone takes 5 turns in goal. Sebastian gets 10</li>
+          </ol>
+        </div>
       </div>
+
       <div class="session-block">
         <h4>Scrimmage <span class="time-badge">15 min</span></h4>
-        <ul>
-          <li>2v1 + GK — attackers try to score, Sebastian in goal</li>
-          <li>Rotate roles every 3 minutes</li>
-        </ul>
+
+        <div class="drill">
+          <div class="drill-name">2v1 + GK</div>
+          <div class="drill-desc">Two attackers try to score against one defender with Sebastian in goal. Great because it combines shooting, passing, and goalkeeping from today's session.</div>
+          <ol class="drill-steps">
+            <li data-step="1. ">Full-width goal (or cone goal about 4m wide)</li>
+            <li data-step="2. ">Sebastian in goal. One parent as defender</li>
+            <li data-step="3. ">Two attackers (one kid + one parent, or both kids) start 15m out</li>
+            <li data-step="4. ">Attackers try to score. Defender tries to stop them</li>
+            <li data-step="5. ">Rotate roles every 3 minutes so everyone plays every position</li>
+          </ol>
+        </div>
       </div>
     </div>
-    <div class="coaching-tip"><strong>Coaching tip:</strong> Shooting — "plant foot points where you want the ball to go." GK — never force diving yet, focus on getting the body behind the ball. Sebastian: praise him for making himself big and staying on his feet.</div>
+
+    <div class="coaching-tip"><strong>Coaching tip:</strong> Shooting — "your plant foot points where you want the ball to go." GK — never force diving yet, focus on getting the BODY behind the ball. The hands just help. Sebastian: praise him for making himself big and staying on his feet. "Great position!" is the best compliment for a GK.</div>
   </div>
 
-  <!-- Week 6 -->
+  <!-- ===== WEEK 6 ===== -->
   <div class="session-card">
     <div class="session-meta">
       <span class="session-week">Week 6</span>
       <span class="session-date">Saturday, May 9</span>
     </div>
     <h3>1v1 Moves</h3>
+    <div class="equipment-box"><strong>Bring:</strong> 1 ball per person, 8–10 cones, 4 cones for mini goals</div>
+
     <div class="session-grid">
       <div class="session-block">
         <h4>Warm-Up <span class="time-badge">10 min</span></h4>
-        <ul>
-          <li>Ball mastery review — toe taps, sole rolls, inside-outside</li>
-          <li>Dribble through cone gates at speed</li>
-        </ul>
+
+        <div class="drill">
+          <div class="drill-name">Ball Mastery Review + Cone Gates at Speed</div>
+          <div class="drill-desc">2 minutes of toe taps, sole rolls, inside-outside touches to wake up the feet. Then dribble through scattered cone gates (1m wide) as fast as possible — how many gates can you get through in 1 minute?</div>
+        </div>
       </div>
+
       <div class="session-block">
         <h4>Main Drills <span class="time-badge">20 min</span></h4>
-        <ul>
-          <li><strong>Step-over:</strong> Demo step over the ball, push away with outside of foot. Practice static, then at cones</li>
-          <li><strong>Scissors:</strong> Swing foot around the ball, push opposite direction. Start slow</li>
-          <li><strong>Body feint:</strong> Drop shoulder one way, push ball the other. "Sell the fake!"</li>
-          <li><strong>1v1 channel:</strong> Attacker tries to dribble past defender in narrow lane</li>
-        </ul>
+
+        <div class="drill">
+          <div class="drill-name">Step-Over</div>
+          <div class="drill-desc">A fake move to trick a defender. You swing your foot OVER the ball (without touching it), then push the ball the other direction with the OUTSIDE of your foot. The defender thinks you're going one way, but you go the other.</div>
+          <ol class="drill-steps">
+            <li data-step="1. ">Place ball on the ground. Stand behind it</li>
+            <li data-step="2. ">Swing your RIGHT foot in a big circle OVER the top of the ball, from inside to outside (your foot goes over without touching it)</li>
+            <li data-step="3. ">Plant that right foot on the ground on the other side of the ball</li>
+            <li data-step="4. ">Immediately push the ball to the LEFT with the OUTSIDE of your LEFT foot</li>
+            <li data-step="5. ">Accelerate away! The move is useless without speed after it</li>
+            <li data-step="6. ">Practice stationary first (just the foot motion). Then try it while walking. Then at a cone (pretend the cone is a defender)</li>
+          </ol>
+          <div class="drill-watch">Watch for: stepping ON the ball instead of over it. Also: no acceleration after — the move only works if you EXPLODE away after the fake.</div>
+        </div>
+
+        <div class="drill">
+          <div class="drill-name">Scissors</div>
+          <div class="drill-desc">Similar to the step-over but the foot goes around the ball from OUTSIDE to INSIDE. Then you push the ball the opposite way. It's a bit flashier and makes defenders freeze.</div>
+          <ol class="drill-steps">
+            <li data-step="1. ">Ball on the ground. Dribble slowly toward a cone</li>
+            <li data-step="2. ">Swing your RIGHT foot around the ball from OUTSIDE to INSIDE (the opposite direction of a step-over)</li>
+            <li data-step="3. ">Your foot wraps around the front of the ball without touching it</li>
+            <li data-step="4. ">Plant your right foot. Push ball to the RIGHT with the OUTSIDE of your LEFT foot</li>
+            <li data-step="5. ">Speed away!</li>
+            <li data-step="6. ">Start slow. It feels awkward at first. That's normal. Try 10 on each side</li>
+          </ol>
+          <div class="drill-watch">Watch for: the fake not being convincing. Drop your shoulder and lean your body in the fake direction — sell it! The body fake matters more than the foot.</div>
+        </div>
+
+        <div class="drill">
+          <div class="drill-name">Body Feint</div>
+          <div class="drill-desc">The simplest and most effective move. Drop your shoulder and lean your body hard to one side (like you're about to go that way), then push the ball the other direction. No fancy footwork needed — just "sell the fake."</div>
+          <ol class="drill-steps">
+            <li data-step="1. ">Dribble toward a cone</li>
+            <li data-step="2. ">About 2m before the cone, drop your LEFT shoulder hard to the left — lean your whole upper body left like you're about to sprint that way</li>
+            <li data-step="3. ">The cone-defender "bites" on the fake</li>
+            <li data-step="4. ">Immediately push the ball to the RIGHT with the outside of your right foot</li>
+            <li data-step="5. ">Sprint past the cone on the right side</li>
+            <li data-step="6. ">Key: make the fake big and dramatic. The bigger the fake, the better it works</li>
+          </ol>
+        </div>
+
+        <div class="drill">
+          <div class="drill-name">1v1 Channel</div>
+          <div class="drill-desc">Now use the moves against a real person! Set up a narrow channel (2m wide, 10m long) with cones. Attacker tries to dribble past defender and out the other end. Defender tries to stop them or kick the ball out of the channel.</div>
+          <ol class="drill-steps">
+            <li data-step="1. ">Set up a channel: 2 lines of cones, 2m apart, 10m long</li>
+            <li data-step="2. ">Attacker starts at one end with the ball. Defender at the other end</li>
+            <li data-step="3. ">Attacker's goal: dribble past the defender and out the far end</li>
+            <li data-step="4. ">Defender's goal: block the ball or kick it out of the channel</li>
+            <li data-step="5. ">Attacker should try using the moves from today: step-over, scissors, or body feint</li>
+            <li data-step="6. ">Each person attacks 5 times, then switch. Keep score!</li>
+          </ol>
+        </div>
       </div>
+
       <div class="session-block">
         <h4>Scrimmage <span class="time-badge">15 min</span></h4>
-        <ul>
-          <li>1v1 to mini goals — use a move before you can score</li>
-          <li>Winner stays on</li>
-        </ul>
+
+        <div class="drill">
+          <div class="drill-name">1v1 to Mini Goals — Must Use a Move</div>
+          <div class="drill-desc">Two mini goals (cone goals, 1.5m wide). 1v1: you can only score if you use a move (step-over, scissors, or feint) first. Winner stays on, loser swaps with someone waiting.</div>
+        </div>
       </div>
+
       <div class="session-block">
         <h4>Cool-Down <span class="time-badge">5 min</span></h4>
-        <ul>
-          <li>Freestyle — show off your favourite move</li>
-          <li>Stretching</li>
-        </ul>
+
+        <div class="drill">
+          <div class="drill-name">Freestyle Show-Off</div>
+          <div class="drill-desc">Each person shows their favourite move from today. Everyone claps. Sebastian can show a GK save if he prefers. Stretching to finish.</div>
+        </div>
       </div>
     </div>
-    <div class="coaching-tip"><strong>Coaching tip:</strong> Kids love moves! This is the session they'll talk about all week. Let them be creative. The key is change of pace — the move is useless without acceleration after. For Sebastian: let him be the defender sometimes to read the attacker (helps his GK anticipation).</div>
+
+    <div class="coaching-tip"><strong>Coaching tip:</strong> Kids LOVE this session — it's the one they'll practice all week. Let them be creative and don't worry about perfect technique. The key coaching point is change of pace: the move is useless without ACCELERATION after. "Fake it, then EXPLODE!" For Sebastian: let him be the defender sometimes — reading the attacker's body language helps his GK anticipation.</div>
   </div>
 
-  <!-- Week 7 -->
+  <!-- ===== WEEK 7 ===== -->
   <div class="session-card">
     <div class="session-meta">
       <span class="session-week">Week 7</span>
       <span class="session-date">Saturday, May 16</span>
     </div>
     <h3>Change of Direction</h3>
+    <div class="equipment-box"><strong>Bring:</strong> 1 ball per person, 10–12 cones</div>
+
     <div class="session-grid">
       <div class="session-block">
         <h4>Warm-Up <span class="time-badge">10 min</span></h4>
-        <ul>
-          <li>Dribble in grid — on whistle, cut 90 degrees</li>
-          <li>Inside cut, outside cut, sole drag-back</li>
-        </ul>
+
+        <div class="drill">
+          <div class="drill-name">Dribble & Cut on Whistle</div>
+          <div class="drill-desc">Everyone dribbles in the grid. On the whistle, immediately change direction 90 degrees using any cut. This teaches quick reactions while dribbling.</div>
+        </div>
       </div>
+
       <div class="session-block">
         <h4>Main Drills <span class="time-badge">20 min</span></h4>
-        <ul>
-          <li><strong>Inside cut:</strong> Dribble at cone, cut inside with inside of foot, accelerate away</li>
-          <li><strong>Outside hook:</strong> Hook ball with outside of foot, reverse direction</li>
-          <li><strong>Cruyff turn:</strong> Fake a pass/shot, drag ball behind standing leg. Demo slowly!</li>
-          <li><strong>Cone gauntlet:</strong> Zig-zag through cones using different turns at each one</li>
-        </ul>
+
+        <div class="drill">
+          <div class="drill-name">Inside Cut</div>
+          <div class="drill-desc">The most basic direction change. You're dribbling forward and need to go left or right. Use the INSIDE of your foot to chop the ball sideways.</div>
+          <ol class="drill-steps">
+            <li data-step="1. ">Dribble toward a cone</li>
+            <li data-step="2. ">About 1m before the cone, plant your LEFT foot beside the ball</li>
+            <li data-step="3. ">Use the INSIDE of your RIGHT foot to push the ball sharply to the LEFT (across your body)</li>
+            <li data-step="4. ">Turn your body and accelerate in the new direction</li>
+            <li data-step="5. ">The ball should change direction about 90 degrees</li>
+            <li data-step="6. ">Practice on both sides: inside of right foot to go left, inside of left foot to go right</li>
+          </ol>
+        </div>
+
+        <div class="drill">
+          <div class="drill-name">Outside Hook</div>
+          <div class="drill-desc">You're dribbling forward and want to REVERSE direction (180 degrees). Hook the ball with the outside of your foot and spin back the way you came.</div>
+          <ol class="drill-steps">
+            <li data-step="1. ">Dribble toward a cone</li>
+            <li data-step="2. ">About 1m before the cone, reach your RIGHT foot forward and wrap it around the front of the ball</li>
+            <li data-step="3. ">Using the OUTSIDE of your foot (pinky-toe side), drag the ball back toward you in a U-turn</li>
+            <li data-step="4. ">Spin your body 180 degrees and dribble back the way you came</li>
+            <li data-step="5. ">It's like doing a U-turn in a car — the ball curves around</li>
+          </ol>
+        </div>
+
+        <div class="drill">
+          <div class="drill-name">Cruyff Turn</div>
+          <div class="drill-desc">Named after Dutch legend Johan Cruyff. You fake a pass or shot, then instead of kicking the ball, you drag it behind your standing leg and go the opposite direction. It's beautiful when done right — and very effective against defenders.</div>
+          <ol class="drill-steps">
+            <li data-step="1. ">Dribble toward a cone. Shape your body as if you're about to pass or shoot — swing your kicking leg back</li>
+            <li data-step="2. ">Instead of kicking, use the INSIDE of your kicking foot to tap the ball BEHIND your standing leg</li>
+            <li data-step="3. ">The ball goes behind you and to the other side of your body</li>
+            <li data-step="4. ">Turn and sprint after the ball in the new direction</li>
+            <li data-step="5. ">Break it down: practice the drag-behind-the-leg motion standing still first. Ball in front of right foot. Inside of right foot taps it behind left leg</li>
+            <li data-step="6. ">Then add the fake: shape to shoot... drag behind... turn and go!</li>
+          </ol>
+          <div class="drill-watch">Watch for: not selling the fake. The whole point is the defender thinks you're about to pass/shoot. Big backswing with the leg before dragging behind. Also, the ball should go BEHIND the standing leg, not just sideways.</div>
+        </div>
+
+        <div class="drill">
+          <div class="drill-name">Cone Gauntlet</div>
+          <div class="drill-desc">Set up 6 cones in a zig-zag. At each cone, perform a specific turn: inside cut at cone 1, outside hook at cone 2, Cruyff at cone 3, and repeat. Continuous — no stopping between cones.</div>
+        </div>
       </div>
+
       <div class="session-block">
         <h4>Scrimmage <span class="time-badge">15 min</span></h4>
-        <ul>
-          <li>2v2 — "escape" game: score by dribbling over an end line, not into a goal</li>
-          <li>Forces lots of direction changes to beat defenders</li>
-        </ul>
+
+        <div class="drill">
+          <div class="drill-name">2v2 Escape Game</div>
+          <div class="drill-desc">No goals! Instead, you score by dribbling the ball over the opponent's end line (like American football). This forces LOTS of direction changes because you need to evade defenders and can score along the entire width of the line.</div>
+          <ol class="drill-steps">
+            <li data-step="1. ">15m x 10m pitch. No goals — just end lines</li>
+            <li data-step="2. ">Score by dribbling the ball over the other team's end line</li>
+            <li data-step="3. ">The ball must be under control when you cross (not a big kick)</li>
+            <li data-step="4. ">This forces dribbling, direction changes, and using moves from today</li>
+          </ol>
+        </div>
       </div>
+
       <div class="session-block">
         <h4>Cool-Down <span class="time-badge">5 min</span></h4>
-        <ul>
-          <li>Cruyff turn competition — who can do 10 fastest?</li>
-          <li>Stretching</li>
-        </ul>
+
+        <div class="drill">
+          <div class="drill-name">Cruyff Turn Speed Challenge</div>
+          <div class="drill-desc">Who can do 10 Cruyff turns fastest? Time each person. This will be messy and funny — that's fine! Stretching to finish.</div>
+        </div>
       </div>
     </div>
-    <div class="coaching-tip"><strong>Coaching tip:</strong> The Cruyff turn will take many attempts. Break it down: 1) shape to pass, 2) drag ball behind standing leg, 3) turn and go. Francisco may get it faster — have him demo for Sebastian. Use the phrase "show and go" to cue the fake.</div>
+
+    <div class="coaching-tip"><strong>Coaching tip:</strong> The Cruyff turn will take many attempts. Break it down: 1) shape to pass, 2) drag ball behind standing leg, 3) turn and go. Francisco may get it faster — have him demo for Sebastian. Use the phrase "show and go" to cue the fake. Don't worry if it's sloppy — they'll refine it over weeks of practice.</div>
   </div>
 
-  <!-- Week 8 -->
+  <!-- ===== WEEK 8 ===== -->
   <div class="session-card">
     <div class="session-meta">
       <span class="session-week">Week 8</span>
       <span class="session-date">Saturday, May 23</span>
     </div>
     <h3>Goalkeeping Deep Dive <span class="gk-badge">Sebastian's Session</span></h3>
+    <div class="equipment-box"><strong>Bring:</strong> 2–3 balls, GK gloves for Sebastian (optional), 6 cones for goal, soft grass location if possible (for diving practice)</div>
+
     <div class="session-grid">
       <div class="session-block">
         <h4>Warm-Up <span class="time-badge">10 min</span></h4>
-        <ul>
-          <li>GK footwork: lateral shuffles between cones</li>
-          <li>Catch & throw pairs — high, medium, low</li>
-          <li>Reaction game: coach points direction, GK shuffles and sets</li>
-        </ul>
+
+        <div class="drill">
+          <div class="drill-name">GK Lateral Shuffles</div>
+          <div class="drill-desc">Set up 2 cones 4m apart on the goal line. GK shuffles sideways between them, touching each cone. Never cross your feet — always stay facing forward in ready position.</div>
+          <ol class="drill-steps">
+            <li data-step="1. ">2 cones on the goal line, 4m apart</li>
+            <li data-step="2. ">GK starts at one cone in ready position</li>
+            <li data-step="3. ">Shuffle sideways to the other cone (side-step, don't cross feet)</li>
+            <li data-step="4. ">Touch the cone, set position, shuffle back</li>
+            <li data-step="5. ">Do 10 trips. Stay low, stay bouncy</li>
+          </ol>
+        </div>
+
+        <div class="drill">
+          <div class="drill-name">Catch & Throw Pairs</div>
+          <div class="drill-desc">Everyone pairs up. Toss balls to each other at different heights: high (head height, W-catch), medium (chest, pull into body), low (ground, scoop). 5 each height.</div>
+        </div>
+
+        <div class="drill">
+          <div class="drill-name">Reaction Game</div>
+          <div class="drill-desc">GK in ready position. Coach points left or right. GK shuffles 2 steps that direction and sets. Coach immediately tosses ball — GK saves. This trains reaction and recovery.</div>
+        </div>
       </div>
+
       <div class="session-block">
         <h4>Main Drills — Everyone <span class="time-badge">10 min</span></h4>
-        <ul>
-          <li><strong>Shot-stopping circuit:</strong> Everyone takes turns in goal — 5 shots each from 8m</li>
-          <li><strong>GK distribution:</strong> After saving, throw or roll ball accurately to a teammate</li>
-        </ul>
+
+        <div class="drill">
+          <div class="drill-name">Shot-Stopping Circuit</div>
+          <div class="drill-desc">Everyone takes turns in goal: 5 shots each from 8m. Mix up the shots: ground level, waist height, to the corners. The GK tries to save using proper technique from Week 5 (W-hands, scoop, ready position).</div>
+        </div>
+
+        <div class="drill">
+          <div class="drill-name">GK Distribution</div>
+          <div class="drill-desc">After saving, the GK needs to get the ball to a teammate. Practice two methods: the roll (bowling motion, for short distances) and the overarm throw (like a cricket throw, for longer distances). Roll to nearby players, throw to far players.</div>
+          <ol class="drill-steps">
+            <li data-step="1. ">GK saves a shot, holds the ball</li>
+            <li data-step="2. ">A teammate stands 5m away. GK rolls the ball to them (bowling motion, keep it on the ground)</li>
+            <li data-step="3. ">Next: teammate stands 10m away. GK throws overarm (step forward with opposite foot, throw over shoulder)</li>
+            <li data-step="4. ">Accuracy matters more than distance. Hit the teammate's feet!</li>
+          </ol>
+        </div>
       </div>
+
       <div class="session-block full">
         <h4>Main Drills — Sebastian Focus <span class="time-badge">10 min</span></h4>
-        <ul>
-          <li><strong>Diving intro:</strong> Start on knees, fall sideways to save. Progress to crouching, then standing</li>
-          <li><strong>Catching technique:</strong> "W" hands for face-height, basket catch for below waist</li>
-          <li><strong>1v1 bravery:</strong> Attacker dribbles in — GK comes out, makes themselves big, narrows the angle</li>
-          <li><strong>GK footwork:</strong> Shuffle along the line, set, save — no crossing feet!</li>
-          <li>Francisco practices shooting while Sebastian saves — win-win</li>
-        </ul>
+
+        <div class="drill">
+          <div class="drill-name">Diving Intro — Progressive Steps</div>
+          <div class="drill-desc">Diving is built up gradually. Never start from standing — work up from kneeling to crouching to standing. Always on soft grass.</div>
+          <ol class="drill-steps">
+            <li data-step="1. ">STEP 1 — Kneeling: Sebastian kneels on both knees. Roll the ball 1m to his left. He falls sideways and catches it, landing on his side. 5 each side</li>
+            <li data-step="2. ">STEP 2 — Crouching: Start in a low squat. Roll ball 1.5m to the side. Push off with the closer foot and fall sideways to save. 5 each side</li>
+            <li data-step="3. ">STEP 3 — Standing: If he's comfortable, try from standing. Gentle roll to the side. Push off, dive, land on side. Only if he's ready!</li>
+            <li data-step="4. ">Key: always land on your SIDE, not flat on your front. Tuck the bottom arm in</li>
+            <li data-step="5. ">Always use rolled balls first, not kicked. Kicked balls come later</li>
+          </ol>
+          <div class="drill-watch">Watch for: fear. If he's hesitant, stay at the kneeling stage longer. Build confidence before progressing. Praise every attempt. "That was brave!" is the best thing to say.</div>
+        </div>
+
+        <div class="drill">
+          <div class="drill-name">1v1 Bravery — Narrowing the Angle</div>
+          <div class="drill-desc">When an attacker dribbles toward goal, the GK should come OFF the line toward the ball. This makes the goal look smaller to the attacker. Teach Sebastian to be brave and come out.</div>
+          <ol class="drill-steps">
+            <li data-step="1. ">Sebastian stands on the goal line</li>
+            <li data-step="2. ">Francisco starts 15m out and dribbles toward goal</li>
+            <li data-step="3. ">As Francisco gets closer, Sebastian walks OUT toward him — arms spread wide, making himself BIG</li>
+            <li data-step="4. ">Sebastian should close the distance but NOT commit — stay on his feet, stay balanced</li>
+            <li data-step="5. ">When Francisco shoots, Sebastian is closer to the ball and has a better chance</li>
+            <li data-step="6. ">Key phrase: "Come out, get big, stay on your feet"</li>
+          </ol>
+        </div>
+
+        <div class="drill">
+          <div class="drill-name">GK Footwork — No Crossed Feet</div>
+          <div class="drill-desc">Goalkeepers shuffle along the goal line — they should NEVER cross their feet because it makes them lose balance. Practice shuffling while staying in ready position.</div>
+          <ol class="drill-steps">
+            <li data-step="1. ">Sebastian on the goal line in ready position</li>
+            <li data-step="2. ">Coach points left — Sebastian shuffles left (left foot steps left, right foot follows — never cross)</li>
+            <li data-step="3. ">Coach points right — shuffles right</li>
+            <li data-step="4. ">After each shuffle, set feet and get in ready position before next call</li>
+            <li data-step="5. ">Then add a shot after the shuffle — shuffle, set, SAVE!</li>
+          </ol>
+        </div>
       </div>
+
       <div class="session-block">
         <h4>Scrimmage <span class="time-badge">15 min</span></h4>
-        <ul>
-          <li>2v1 + GK — Sebastian in goal, focus on positioning</li>
-          <li>"Can you save 5 in a row?" challenge</li>
-        </ul>
+
+        <div class="drill">
+          <div class="drill-name">2v1 + GK — "Save 5 in a Row" Challenge</div>
+          <div class="drill-desc">Sebastian in goal. Two attackers vs. one defender. Challenge: can Sebastian save 5 shots in a row? Francisco practices shooting, Sebastian practices saving. Everyone cheers.</div>
+        </div>
       </div>
     </div>
-    <div class="coaching-tip"><strong>Coaching tip:</strong> This is Sebastian's day to shine. Make him feel like the expert. Key cues: "Set your feet before the shot," "hands up, ready," and "attack the ball, don't wait for it." For diving — always onto soft grass, never force it. Let him build confidence at his own pace. Use rolled balls before kicked ones.</div>
+
+    <div class="coaching-tip"><strong>Coaching tip:</strong> This is Sebastian's day to shine. Make him feel like the expert. Key cues: "Set your feet before the shot," "hands up, ready," and "attack the ball, don't wait for it." For diving — ALWAYS onto soft grass, NEVER force it. Let him build confidence at his own pace. Use rolled balls before kicked ones. If he's nervous about diving, that's totally okay — stay at catching standing up. The bravery will come with time.</div>
   </div>
 
-  <!-- Week 9 -->
+  <!-- ===== WEEK 9 ===== -->
   <div class="session-card">
     <div class="session-meta">
       <span class="session-week">Week 9</span>
       <span class="session-date">Saturday, May 30</span>
     </div>
     <h3>Defending Basics</h3>
+    <div class="equipment-box"><strong>Bring:</strong> 1 ball per person, 8 cones</div>
+
     <div class="session-grid">
       <div class="session-block">
         <h4>Warm-Up <span class="time-badge">10 min</span></h4>
-        <ul>
-          <li>Tag game with balls — dribble and tag at the same time</li>
-          <li>Shadow drill: defender mirrors attacker's movements without the ball</li>
-        </ul>
+
+        <div class="drill">
+          <div class="drill-name">Tag with Balls</div>
+          <div class="drill-desc">Everyone dribbles a ball. One person is "it" and has to tag someone while dribbling their own ball. If tagged, you become "it." This teaches dribbling under pressure and spatial awareness — basically defending and attacking at the same time.</div>
+        </div>
+
+        <div class="drill">
+          <div class="drill-name">Shadow Defending</div>
+          <div class="drill-desc">No ball. Pairs face each other. The "attacker" moves side to side, forward, back. The "defender" mirrors their movements — always staying directly in front of them. This teaches body positioning without the ball to distract.</div>
+          <ol class="drill-steps">
+            <li data-step="1. ">Pairs face each other, 1m apart, no ball</li>
+            <li data-step="2. ">Attacker moves freely: left, right, forward, back</li>
+            <li data-step="3. ">Defender stays facing attacker and mirrors every movement — always directly between attacker and an imaginary goal behind the defender</li>
+            <li data-step="4. ">Defender's stance: sideways on (one foot forward, one back), low, balanced, on balls of feet</li>
+            <li data-step="5. ">30 seconds, then switch roles</li>
+          </ol>
+        </div>
       </div>
+
       <div class="session-block">
         <h4>Main Drills <span class="time-badge">20 min</span></h4>
-        <ul>
-          <li><strong>Jockeying:</strong> Defender stays on feet, shuffles, keeps body between attacker and goal</li>
-          <li><strong>Channeling:</strong> Force the attacker to one side — "show them the sideline"</li>
-          <li><strong>Tackling intro:</strong> Block tackle with inside of foot — timing is everything</li>
-          <li><strong>1v1 defending:</strong> Attacker starts 10m away, defender closes down and contains</li>
-        </ul>
+
+        <div class="drill">
+          <div class="drill-name">Jockeying</div>
+          <div class="drill-desc">The defensive stance: instead of charging at the attacker, the defender stays on their feet, stays low, and shuffles backward while keeping their body between the attacker and the goal. The goal is to DELAY the attacker, not to win the ball immediately.</div>
+          <ol class="drill-steps">
+            <li data-step="1. ">Defender faces attacker. Attacker has the ball</li>
+            <li data-step="2. ">Defender's body position: turned SIDEWAYS (one shoulder pointing at the attacker). Knees bent, low centre of gravity</li>
+            <li data-step="3. ">As the attacker dribbles forward, the defender shuffles BACKWARDS, always staying about 1m away</li>
+            <li data-step="4. ">DON'T lunge in! DON'T turn your back! Just stay in front and shuffle</li>
+            <li data-step="5. ">Your job: slow them down and wait for them to make a mistake (a big touch, looking down)</li>
+            <li data-step="6. ">Practice: attacker dribbles 20m slowly. Defender jockeys the whole way without lunging</li>
+          </ol>
+          <div class="drill-watch">Watch for: standing upright (too easy to beat — stay LOW) and diving in (the #1 mistake young defenders make).</div>
+        </div>
+
+        <div class="drill">
+          <div class="drill-name">Channeling — "Show Them the Sideline"</div>
+          <div class="drill-desc">Instead of blocking the attacker head-on, position your body to force them toward the sideline (where they're less dangerous). You angle your body so the only way they can go is toward the edge of the field.</div>
+          <ol class="drill-steps">
+            <li data-step="1. ">Attacker starts in the middle of the pitch with the ball</li>
+            <li data-step="2. ">Defender approaches at an angle — instead of running straight at them, come from slightly to one side</li>
+            <li data-step="3. ">Position your body so the attacker's only easy path is toward the sideline, not toward the goal</li>
+            <li data-step="4. ">Keep shuffling to maintain that angle — don't let them cut inside</li>
+            <li data-step="5. ">The attacker is forced to the sideline where they're less dangerous and more likely to lose the ball</li>
+            <li data-step="6. ">Coach calls out: "Show them the sideline!" as a reminder</li>
+          </ol>
+        </div>
+
+        <div class="drill">
+          <div class="drill-name">Block Tackle</div>
+          <div class="drill-desc">When the attacker makes a mistake (big touch, looks down), THAT is when you tackle. The block tackle uses the inside of your foot to block the ball as the attacker tries to dribble past.</div>
+          <ol class="drill-steps">
+            <li data-step="1. ">Timing is everything — only tackle when the ball is away from the attacker's foot</li>
+            <li data-step="2. ">Step in firmly and place the inside of your foot against the ball</li>
+            <li data-step="3. ">Lock your ankle (just like passing!) and lean your body into it</li>
+            <li data-step="4. ">The goal is to wedge the ball between your foot and theirs, stopping it dead</li>
+            <li data-step="5. ">Then poke it away or push through</li>
+            <li data-step="6. ">Practice: attacker dribbles slowly. Defender jockeys, waits for a big touch, then tackles</li>
+          </ol>
+          <div class="drill-watch">Watch for: reckless tackling (going in too hard). This is family soccer! Emphasize timing over force.</div>
+        </div>
+
+        <div class="drill">
+          <div class="drill-name">1v1 Defending — Closing Down</div>
+          <div class="drill-desc">Attacker starts 10m away. Defender sprints toward them, then SLOWS DOWN at about 2m and gets into jockeying position. The sprint-then-slow is called "closing down" — you eat up the space fast, then get patient.</div>
+          <ol class="drill-steps">
+            <li data-step="1. ">Attacker stands still with ball. Defender starts 10m away</li>
+            <li data-step="2. ">On "GO!" defender sprints toward attacker</li>
+            <li data-step="3. ">At about 2m away, defender SLOWS DOWN and gets into sideways jockey stance</li>
+            <li data-step="4. ">Don't sprint all the way in — you'll fly past them! The slowdown is crucial</li>
+            <li data-step="5. ">Now jockey as the attacker tries to dribble past</li>
+            <li data-step="6. ">Practice the timing: sprint → brake → jockey → wait → tackle when the moment is right</li>
+          </ol>
+        </div>
       </div>
+
       <div class="session-block">
         <h4>Scrimmage <span class="time-badge">15 min</span></h4>
-        <ul>
-          <li>2v2 — defensive team gets a point for winning the ball back and completing 3 passes</li>
-          <li>Sebastian as GK — coach him to organize: "left! right! close down!"</li>
-        </ul>
+
+        <div class="drill">
+          <div class="drill-name">2v2 — Points for Winning the Ball</div>
+          <div class="drill-desc">Regular 2v2 but the defending team earns a point for winning the ball AND completing 3 passes afterward. This rewards good defending AND composure after winning the ball. Sebastian in goal — coach him to shout directions to defenders: "Left side!" "Close him down!" "Stay on your feet!"</div>
+        </div>
       </div>
+
       <div class="session-block">
         <h4>Cool-Down <span class="time-badge">5 min</span></h4>
-        <ul>
-          <li>Discussion: what's harder — attacking or defending? Why?</li>
-          <li>Stretching</li>
-        </ul>
+
+        <div class="drill">
+          <div class="drill-name">Group Discussion + Stretching</div>
+          <div class="drill-desc">Sit in a circle. Ask: "What's harder — attacking or defending? Why?" Let the kids talk. There's no wrong answer. Stretching to finish.</div>
+        </div>
       </div>
     </div>
-    <div class="coaching-tip"><strong>Coaching tip:</strong> "Stay on your feet!" is the mantra. Kids dive in — teach patience. The defender wins by not getting beaten, not by winning the ball. For Sebastian in goal: this is where he learns to talk to his defenders — encourage him to shout instructions.</div>
+
+    <div class="coaching-tip"><strong>Coaching tip:</strong> "Stay on your feet!" is the mantra all week. Kids always dive in — teach patience. The defender wins by NOT getting beaten, not by winning the ball. Reward patience: "Great job staying on your feet!" For Sebastian in goal: this is where he learns to talk to his defenders — encourage him to shout instructions. A loud goalkeeper is a good goalkeeper.</div>
   </div>
 
 </section>
@@ -698,140 +1364,313 @@ footer {
   </div>
   <p class="phase-desc">Put it all together. Combination play, game situations, set pieces, and a family tournament to close out the season. By now they should be confident on the ball and ready to play.</p>
 
-  <!-- Week 10 -->
+  <!-- ===== WEEK 10 ===== -->
   <div class="session-card">
     <div class="session-meta">
       <span class="session-week">Week 10</span>
       <span class="session-date">Saturday, June 6</span>
     </div>
     <h3>Combination Play</h3>
+    <div class="equipment-box"><strong>Bring:</strong> 1 ball, 8 cones, bibs/pinnies if you have them (to tell teams apart)</div>
+
     <div class="session-grid">
       <div class="session-block">
         <h4>Warm-Up <span class="time-badge">10 min</span></h4>
-        <ul>
-          <li>Triangle passing — one touch if possible</li>
-          <li>Pass and move — never stand still after passing</li>
-        </ul>
+
+        <div class="drill">
+          <div class="drill-name">Triangle Passing — One Touch</div>
+          <div class="drill-desc">Same triangle passing from Week 3 but now try to do it in ONE touch (pass without stopping the ball first). This is much harder! If one touch is too difficult, allow two. Pass and move to the spot you passed to.</div>
+        </div>
       </div>
+
       <div class="session-block">
         <h4>Main Drills <span class="time-badge">20 min</span></h4>
-        <ul>
-          <li><strong>Wall pass (give-and-go):</strong> Pass to teammate, sprint past defender, receive return pass</li>
-          <li><strong>Overlap run:</strong> Pass wide, the passer runs around the outside for a return ball</li>
-          <li><strong>2v1 attack:</strong> Two attackers vs one defender — use the extra player!</li>
-        </ul>
+
+        <div class="drill">
+          <div class="drill-name">Wall Pass (Give-and-Go) — Full Version</div>
+          <div class="drill-desc">The wall pass from Week 3, now against a real defender. Player A passes to Player B, then sprints PAST the defender. Player B immediately plays the ball into the space where Player A is running. It's called "give-and-go" because you give the ball and GO.</div>
+          <ol class="drill-steps">
+            <li data-step="1. ">Set up: one "defender" (parent) standing still. Player A with ball, Player B to the side</li>
+            <li data-step="2. ">Player A dribbles toward the defender</li>
+            <li data-step="3. ">When close (about 3m), Player A passes to Player B (the "wall")</li>
+            <li data-step="4. ">IMMEDIATELY Player A sprints around the defender (either side)</li>
+            <li data-step="5. ">Player B plays the ball into the space AHEAD of where Player A is running</li>
+            <li data-step="6. ">Player A receives the ball on the run — they've now beaten the defender!</li>
+            <li data-step="7. ">Key: timing! The return pass from B must be played BEFORE A arrives. Pass it into space, not to their feet</li>
+          </ol>
+          <div class="drill-watch">Watch for: Player A stopping after the pass. "PASS AND GO! Don't pass and watch!" Also: Player B's return pass needs to be in FRONT of the runner, not at them.</div>
+        </div>
+
+        <div class="drill">
+          <div class="drill-name">Overlap Run</div>
+          <div class="drill-desc">Player A has the ball wide (near the sideline). Player A passes to Player B who is slightly ahead. Player A then runs AROUND the outside of Player B (overlapping them). Player B passes to A who is now in a new position. This creates confusion for the defender — who do they mark?</div>
+          <ol class="drill-steps">
+            <li data-step="1. ">Player A on the sideline with ball. Player B slightly ahead and inside</li>
+            <li data-step="2. ">A passes to B</li>
+            <li data-step="3. ">A sprints forward around the OUTSIDE of B (between B and the sideline)</li>
+            <li data-step="4. ">B holds the ball for 1-2 seconds (to let A get ahead), then passes forward to A</li>
+            <li data-step="5. ">A receives the ball further up the field in space</li>
+            <li data-step="6. ">Practice both sides of the field</li>
+          </ol>
+        </div>
+
+        <div class="drill">
+          <div class="drill-name">2v1 Attack</div>
+          <div class="drill-desc">Two attackers vs. one defender. The attackers must use teamwork (wall pass, overlap, or simple passing) to get past the defender. The defender can't guard both players — so the attackers need to use the extra person.</div>
+          <ol class="drill-steps">
+            <li data-step="1. ">Two attackers start 15m from goal with 1 ball. One defender between them and the goal</li>
+            <li data-step="2. ">Attackers try to score. They outnumber the defender!</li>
+            <li data-step="3. ">Coach: ask "Who is the defender NOT watching? That's who should get the ball!"</li>
+            <li data-step="4. ">Try using a wall pass, or just a simple pass to the open teammate</li>
+            <li data-step="5. ">Rotate roles every 3 attempts</li>
+          </ol>
+        </div>
       </div>
+
       <div class="session-block">
         <h4>Scrimmage <span class="time-badge">15 min</span></h4>
-        <ul>
-          <li>2v2 + GK — goal only counts from a combination play (wall pass or overlap)</li>
-          <li>Sebastian in goal — practice starting attacks with throws</li>
-        </ul>
+
+        <div class="drill">
+          <div class="drill-name">2v2 + GK — Combination Goals Only</div>
+          <div class="drill-desc">Goal only counts if it comes from a wall pass or overlap play. Sebastian in goal, practicing distribution (throws to teammates to start attacks). Can Sebastian start a combination play by throwing to a teammate?</div>
+        </div>
       </div>
+
       <div class="session-block">
         <h4>Cool-Down <span class="time-badge">5 min</span></h4>
-        <ul>
-          <li>Rondo: 3v1 keep-away — quick passing</li>
-          <li>Stretching</li>
-        </ul>
+
+        <div class="drill">
+          <div class="drill-name">3v1 Rondo</div>
+          <div class="drill-desc">Quick keep-away game from Week 4. 3 outside, 1 in the middle. Max 2 touches. Fast passing. Rotate defender every 60 seconds. Great for ending on a high — everyone loves rondos by now.</div>
+        </div>
       </div>
     </div>
-    <div class="coaching-tip"><strong>Coaching tip:</strong> The wall pass is a game-changer at this age because nobody expects it. Key cue: "pass and GO, don't pass and watch." Play with the kids — they need a reliable wall to pass off. Sebastian can practice GK distribution to start these combinations.</div>
+
+    <div class="coaching-tip"><strong>Coaching tip:</strong> The wall pass is a game-changer at this age because nobody expects it. Key cue: "pass and GO, don't pass and watch." Play with the kids — they need a reliable "wall" to pass off. Sebastian can practice GK distribution to start these combinations. This week is where all the skills come together!</div>
   </div>
 
-  <!-- Week 11 -->
+  <!-- ===== WEEK 11 ===== -->
   <div class="session-card">
     <div class="session-meta">
       <span class="session-week">Week 11</span>
       <span class="session-date">Saturday, June 13</span>
     </div>
     <h3>Small-Sided Games</h3>
+    <div class="equipment-box"><strong>Bring:</strong> 1 ball, 8 cones, bibs/pinnies</div>
+
     <div class="session-grid">
       <div class="session-block">
         <h4>Warm-Up <span class="time-badge">10 min</span></h4>
-        <ul>
-          <li>Ball mastery review — pick your 3 favourite touches</li>
-          <li>Quick passing pairs — 20 passes in 1 minute</li>
-        </ul>
+
+        <div class="drill">
+          <div class="drill-name">Free Choice Ball Mastery + Speed Passing</div>
+          <div class="drill-desc">Each person picks their 3 favourite touches from the program and does them for 3 minutes. Then: passing pairs, try to complete 20 passes in 1 minute without mistakes. Quick feet!</div>
+        </div>
       </div>
+
       <div class="session-block">
         <h4>Main Activities <span class="time-badge">35 min</span></h4>
-        <ul>
-          <li><strong>3v1 Rondo:</strong> Keep the ball away from the defender — 2-touch max (10 min)</li>
-          <li><strong>2v2 mini tournament:</strong> First to 3 goals, switch opponents (15 min)</li>
-          <li><strong>Game awareness:</strong> Pause the game mid-play — "where should you be? what are your options?" (10 min)</li>
-        </ul>
+
+        <div class="drill">
+          <div class="drill-name">3v1 Rondo — 2-Touch Max (10 min)</div>
+          <div class="drill-desc">The classic rondo from Week 4 but now with a strict rule: max 2 touches. Touch 1 = control. Touch 2 = pass. This forces quick thinking and clean first touches. Rotate defender every 60 seconds.</div>
+        </div>
+
+        <div class="drill">
+          <div class="drill-name">2v2 Mini Tournament (15 min)</div>
+          <div class="drill-desc">Round-robin 2v2 games. First to 3 goals wins the round. Mix up the teams each round: parents vs kids, Andres+Sebastian vs Maria+Francisco, boys vs girls, etc. Keep score across all rounds — who wins the tournament?</div>
+          <ol class="drill-steps">
+            <li data-step="1. ">Small pitch with cone goals. Play first to 3 goals</li>
+            <li data-step="2. ">Round 1: parents vs kids</li>
+            <li data-step="3. ">Round 2: Andres+Sebastian vs Maria+Francisco</li>
+            <li data-step="4. ">Round 3: mix it up again</li>
+            <li data-step="5. ">Track total goals for each person — who's the top scorer?</li>
+          </ol>
+        </div>
+
+        <div class="drill">
+          <div class="drill-name">Game Awareness Freeze (10 min)</div>
+          <div class="drill-desc">Play a 2v2 game but the coach can shout "FREEZE!" at any moment. Everyone stops exactly where they are. Coach asks questions: "Where should you be? What are your options? Who is open? Where is the space?" Then unfreeze and continue. These freeze moments are the most valuable coaching tool — they teach game intelligence.</div>
+          <ol class="drill-steps">
+            <li data-step="1. ">2v2 game, normal rules</li>
+            <li data-step="2. ">Coach randomly shouts "FREEZE!" — everyone stops</li>
+            <li data-step="3. ">Ask the player with the ball: "Who could you pass to? Where is the open space?"</li>
+            <li data-step="4. ">Ask a player without the ball: "Where should you move to help your teammate?"</li>
+            <li data-step="5. ">Don't give the answer — let THEM figure it out. Ask, don't tell</li>
+            <li data-step="6. ">Unfreeze and see if they make a better decision</li>
+          </ol>
+        </div>
       </div>
-      <div class="session-block full">
+
+      <div class="session-block">
         <h4>Cool-Down <span class="time-badge">5 min</span></h4>
-        <ul>
-          <li>What was your best moment today? Each person shares</li>
-          <li>Stretching</li>
-        </ul>
+
+        <div class="drill">
+          <div class="drill-name">Best Moment of the Day</div>
+          <div class="drill-desc">Sit in a circle. Each person shares their best moment from today. Stretching while talking. This builds confidence and finishes on a positive note.</div>
+        </div>
       </div>
     </div>
-    <div class="coaching-tip"><strong>Coaching tip:</strong> Less coaching, more playing today. Step back and let them figure things out. Only pause to ask questions: "What did you see?" "Was there a better option?" The freeze-frame moments are gold for developing game sense. Sebastian: let him play outfield too — well-rounded.</div>
+
+    <div class="coaching-tip"><strong>Coaching tip:</strong> Less coaching, more playing today. Step back and let them figure things out. Only intervene with freeze moments. The questions are more important than the answers — "What did you see?" "Was there a better option?" Don't tell them what to do — ask them what they COULD do. Sebastian: let him play outfield too. Being well-rounded helps goalkeepers understand the game better.</div>
   </div>
 
-  <!-- Week 12 -->
+  <!-- ===== WEEK 12 ===== -->
   <div class="session-card">
     <div class="session-meta">
       <span class="session-week">Week 12</span>
       <span class="session-date">Saturday, June 20</span>
     </div>
     <h3>Set Pieces & Game Situations</h3>
+    <div class="equipment-box"><strong>Bring:</strong> 2–3 balls, 6 cones for goal, whistle</div>
+
     <div class="session-grid">
       <div class="session-block">
         <h4>Warm-Up <span class="time-badge">10 min</span></h4>
-        <ul>
-          <li>Shooting practice from different positions</li>
-          <li>GK warm-up for Sebastian — shots from 10m</li>
-        </ul>
+
+        <div class="drill">
+          <div class="drill-name">Shooting from Different Positions + GK Warm-Up</div>
+          <div class="drill-desc">Take turns shooting from different spots: straight on (10m), left side (angle), right side (angle), and close range (5m). Sebastian in goal for the warm-up, getting ready for set-piece practice. 3 shots from each position per person.</div>
+        </div>
       </div>
+
       <div class="session-block">
         <h4>Main Drills — Set Pieces <span class="time-badge">10 min</span></h4>
-        <ul>
-          <li><strong>Corner kicks:</strong> Practice delivery to near post/far post, and attacking the ball</li>
-          <li><strong>Free kicks:</strong> Direct free kicks from 15m — pick your spot</li>
-          <li><strong>Throw-ins:</strong> Proper technique — both feet on the ground, ball behind head</li>
-        </ul>
+
+        <div class="drill">
+          <div class="drill-name">Corner Kicks</div>
+          <div class="drill-desc">A corner kick happens when the defending team kicks the ball over their own end line. The attacking team places the ball in the corner arc and kicks it into the box. In family soccer, just getting the ball into the area is 80% of the job.</div>
+          <ol class="drill-steps">
+            <li data-step="1. ">Place ball at the corner of the pitch (in a real game it's in the corner arc)</li>
+            <li data-step="2. ">Kicker: use the inside of your foot to curve the ball into the area in front of the goal</li>
+            <li data-step="3. ">Aim for the area between the penalty spot and the goal — not directly at the goal</li>
+            <li data-step="4. ">Attacker: stand near the goal and TIME your run to meet the ball. Run ONTO the ball, don't stand still</li>
+            <li data-step="5. ">Try heading it or shooting with your foot on the volley (before it bounces)</li>
+            <li data-step="6. ">Sebastian: practice coming out to CATCH corners. Call "KEEPER!" loudly so everyone knows to get out of the way</li>
+          </ol>
+        </div>
+
+        <div class="drill">
+          <div class="drill-name">Free Kicks</div>
+          <div class="drill-desc">A free kick is awarded when the other team commits a foul. You get a free shot at goal from wherever the foul happened. Practice direct free kicks from about 12-15m out.</div>
+          <ol class="drill-steps">
+            <li data-step="1. ">Place ball 12m from goal (about 15 big steps)</li>
+            <li data-step="2. ">Pick your target: bottom corner is usually best — low and to the side</li>
+            <li data-step="3. ">Step back 3 steps. Deep breath. Eyes on your target, not the ball</li>
+            <li data-step="4. ">Approach and strike with laces or inside of foot</li>
+            <li data-step="5. ">Each person takes 5 free kicks. Who scores the most?</li>
+          </ol>
+        </div>
+
+        <div class="drill">
+          <div class="drill-name">Throw-Ins</div>
+          <div class="drill-desc">When the ball goes out on the sideline, the other team throws it back in. There are specific rules that are commonly broken.</div>
+          <ol class="drill-steps">
+            <li data-step="1. ">Both feet must stay ON THE GROUND (can't jump or lift a foot)</li>
+            <li data-step="2. ">Ball must come from BEHIND your head (bring it all the way back over)</li>
+            <li data-step="3. ">Use BOTH hands equally (can't throw with just one hand)</li>
+            <li data-step="4. ">You must throw from behind the sideline (can't step onto the field)</li>
+            <li data-step="5. ">Practice: 5 throw-ins each, aiming at a teammate's feet. Accuracy matters!</li>
+          </ol>
+        </div>
       </div>
+
       <div class="session-block">
         <h4>Main Drills — Decision Making <span class="time-badge">10 min</span></h4>
-        <ul>
-          <li><strong>Pass or dribble?</strong> Attacker faces defender — coach calls "1!" (1v1) or "2!" (2v1). Read the situation</li>
-          <li><strong>Transition game:</strong> Lose the ball → defend immediately. Win it back → attack immediately</li>
-        </ul>
+
+        <div class="drill">
+          <div class="drill-name">Pass or Dribble?</div>
+          <div class="drill-desc">An attacker faces a defender. Behind the defender is a goal. A teammate stands to one side. The coach calls out a number: "1!" means 1v1 (just you vs defender — dribble!). "2!" means 2v1 (your teammate enters — pass!). The attacker must READ the situation and make the right choice.</div>
+          <ol class="drill-steps">
+            <li data-step="1. ">Attacker with ball, 12m from goal. Defender between them and the goal</li>
+            <li data-step="2. ">Teammate waits to the side</li>
+            <li data-step="3. ">Coach shouts "1!" — it's 1v1. Attacker should dribble and use a move to beat the defender</li>
+            <li data-step="4. ">Coach shouts "2!" — teammate runs on. Now it's 2v1. Attacker should PASS to the open teammate</li>
+            <li data-step="5. ">The attacker doesn't know which number is coming — they must react and decide</li>
+            <li data-step="6. ">Key lesson: when you have a teammate open, PASS. When you're alone, DRIBBLE</li>
+          </ol>
+        </div>
+
+        <div class="drill">
+          <div class="drill-name">Transition Game</div>
+          <div class="drill-desc">2v2 but with instant transitions: the moment you lose the ball, you're defending. The moment you win it back, you're attacking. No breaks! This teaches the mental switch that separates good players.</div>
+          <ol class="drill-steps">
+            <li data-step="1. ">2v2 game, small pitch</li>
+            <li data-step="2. ">When your team loses the ball: IMMEDIATELY press the ball and try to win it back. Don't stop and think!</li>
+            <li data-step="3. ">When your team wins the ball: IMMEDIATELY look forward and attack. Don't waste time!</li>
+            <li data-step="4. ">Coach watches for players who react quickly to turnovers. Praise: "Great reaction when you lost it!"</li>
+          </ol>
+        </div>
       </div>
+
       <div class="session-block">
         <h4>Scrimmage <span class="time-badge">15 min</span></h4>
-        <ul>
-          <li>Full game with set pieces — every out-of-play is practiced properly</li>
-          <li>Sebastian: GK positioning on corners and free kicks</li>
-        </ul>
+
+        <div class="drill">
+          <div class="drill-name">Full Game with Proper Set Pieces</div>
+          <div class="drill-desc">Play a 2v2+GK game, but every time the ball goes out of play, practice the proper restart: throw-ins on the sideline, corners when the ball goes over the end line, free kicks for fouls. Sebastian practices positioning on corners and free kicks — where should the GK stand?</div>
+        </div>
       </div>
     </div>
-    <div class="coaching-tip"><strong>Coaching tip:</strong> Set pieces are free goals waiting to happen at youth level. For corners — just getting the ball into the box is 80% of the job. For Sebastian: teach him to claim crosses by calling "KEEPER!" and coming out confidently. Decision-making drills are the most important thing at this age — more valuable than any skill.</div>
+
+    <div class="coaching-tip"><strong>Coaching tip:</strong> Set pieces are free goals waiting to happen at youth level. For corners — just getting the ball into the box is 80% of the job. For Sebastian: teach him to claim crosses by calling "KEEPER!" loudly and coming out confidently — if the GK calls it, everyone else clears out. Decision-making drills (pass or dribble?) are the most important thing at this age — more valuable than any skill move.</div>
   </div>
 
-  <!-- Week 13 -->
+  <!-- ===== WEEK 13 ===== -->
   <div class="session-card">
     <div class="session-meta">
       <span class="session-week">Week 13</span>
       <span class="session-date">Saturday, June 27</span>
     </div>
     <h3>Family Tournament</h3>
+    <div class="equipment-box"><strong>Bring:</strong> 2–3 balls, 10 cones, whiteboard or paper for scores, speaker for music, snacks/drinks for after, phone to film highlights!</div>
+
     <div class="session-grid">
       <div class="session-block full">
         <h4>The Plan <span class="time-badge">50 min</span></h4>
-        <ul>
-          <li><strong>Skills challenge (15 min):</strong> Dribble relay, shooting accuracy, juggling count, 1v1 moves showcase, GK save challenge</li>
-          <li><strong>Mini tournament (25 min):</strong> Round-robin 1v1s and 2v2s. Keep score! Mix up the teams: parents vs kids, boys vs girls, age handicaps</li>
-          <li><strong>Awards & celebration (10 min):</strong> Best goal, best save (Sebastian!), best move, most improved, and a treat</li>
-        </ul>
+
+        <div class="drill">
+          <div class="drill-name">Skills Challenge (15 min)</div>
+          <div class="drill-desc">A series of mini-competitions. Each event is scored — keep a running total on a whiteboard.</div>
+          <ol class="drill-steps">
+            <li data-step="1. "><strong>Dribble Relay:</strong> Weave through cones and back. Fastest time wins (time each person individually)</li>
+            <li data-step="2. "><strong>Shooting Accuracy:</strong> 5 shots at cone targets in the goal corners. Most hits wins</li>
+            <li data-step="3. "><strong>Juggling Count:</strong> Everyone gets 3 attempts. Highest number wins</li>
+            <li data-step="4. "><strong>Move Showcase:</strong> Each person performs their best 1v1 move. Everyone votes on the most creative (no self-votes!)</li>
+            <li data-step="5. "><strong>GK Save Challenge:</strong> Sebastian faces 10 shots. How many can he save? Francisco faces 10 too. Most saves wins</li>
+          </ol>
+        </div>
+
+        <div class="drill">
+          <div class="drill-name">Mini Tournament (25 min)</div>
+          <div class="drill-desc">Round-robin of 1v1 and 2v2 games. Keep score across all games. Mix up the matchups to keep it interesting.</div>
+          <ol class="drill-steps">
+            <li data-step="1. ">Round 1: 1v1 — Francisco vs Sebastian (parents ref). First to 3</li>
+            <li data-step="2. ">Round 2: 1v1 — Andres vs Maria (kids ref and commentate!). First to 3</li>
+            <li data-step="3. ">Round 3: 2v2 — Parents vs Kids. First to 5. Sebastian can be GK</li>
+            <li data-step="4. ">Round 4: 2v2 — Andres+Sebastian vs Maria+Francisco. First to 5</li>
+            <li data-step="5. ">Final: 2v2 — teams chosen by rock-paper-scissors. First to 5 — winner takes all!</li>
+            <li data-step="6. ">Parents: compete seriously but let the kids have their moments. Don't obviously throw it!</li>
+          </ol>
+        </div>
+
+        <div class="drill">
+          <div class="drill-name">Awards & Celebration (10 min)</div>
+          <div class="drill-desc">This is the most important part of the whole day. Every person gets recognized.</div>
+          <ol class="drill-steps">
+            <li data-step="1. ">Gather in a circle. Announce awards one by one:</li>
+            <li data-step="2. "><strong>Best Goal of the Day</strong> — the most memorable goal from the tournament</li>
+            <li data-step="3. "><strong>Best Save</strong> — Sebastian's best save of the day</li>
+            <li data-step="4. "><strong>Best Move</strong> — who pulled off the best 1v1 move?</li>
+            <li data-step="5. "><strong>Most Improved Player</strong> — who improved the most over 13 weeks? (Think about who struggled early and got better)</li>
+            <li data-step="6. ">Celebrate with snacks and drinks! Review everyone's highlights from the 13 weeks</li>
+            <li data-step="7. ">Ask: "What was your favourite session?" and "Do we want to do this again?"</li>
+          </ol>
+        </div>
       </div>
     </div>
-    <div class="coaching-tip"><strong>Coaching tip:</strong> Make it feel like an event — bring music, keep score on a whiteboard, maybe film the highlights. Let the kids win (but not too obviously). This day is about celebrating 13 weeks of work and making them want to keep playing. Every person gets recognized for something specific they improved at.</div>
+
+    <div class="coaching-tip"><strong>Coaching tip:</strong> Make it feel like an EVENT — bring music, keep score on a whiteboard, maybe film the highlights. Let the kids win (but not too obviously — they'll know). This day is about celebrating 13 weeks of work and making them want to keep playing. Every person should get recognized for something SPECIFIC they improved at. End on a high. And enjoy it — you built this!</div>
   </div>
 
 </section>
